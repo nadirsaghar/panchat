@@ -19,7 +19,7 @@ public class AppTest
 			String schema;
 			schema = new Scanner( new File("/home/nakull/GSoC/panchat/XML2JSON/src/test/java/xmltojsontest/Schema.txt") ).useDelimiter("\\A").next();
 			IMappings mappings = new Mappings(schema);
-			XmlToJson xmlToJson = new XmlToJson();
+			XmlToJson xmlToJson = new XmlToJson("/home/nakull/GSoC/panchat/XML2JSON/src/test/java/xmltojsontest/Test.xml");
 			String xml = new Scanner( new File("/home/nakull/GSoC/panchat/XML2JSON/src/test/java/xmltojsontest/Test.xml") ).useDelimiter("\\A").next();
 			
 			xmlToJson.convertXmlToJson(xml, mappings, null);

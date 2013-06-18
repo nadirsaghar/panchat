@@ -1,1 +1,1307 @@
-hi
+
+<ImageAnnotationCollection xmlns="gme://caCORE.caCORE/4.4/edu.northwestern.radiology.AIM" aimVersion="AIMv4_0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="gme://caCORE.caCORE/4.4/edu.northwestern.radiology.AIM AIM_v4_rv44_XML.xsd">
+	<uniqueIdentifier root="2.25.208956080782940923012854643973182251372"/>
+	<description value="Collection Description"/>
+	<dateTime value="20130401171508"/>
+	<user>
+		<name value="FName-Test^LName-User"/>
+		<loginName value="TUser"/>
+		<roleInTrial value="Recording"/>
+		<numberWithinRoleOfClinicalTrial value="11"/>
+	</user>
+	<equipment>
+		<manufacturerName value="NWU"/>
+		<manufacturerModelName value="AIM_4.0"/>
+		<deviceSerialNumber value="ser_num_123"/>
+		<softwareVersion value="4.0alpha"/>
+	</equipment>
+	<person>
+		<name value="Test^Person"/>
+		<id value="PID123"/>
+		<birthDate value="19500101"/>
+		<sex value="O"/>
+		<ethnicGroup value="Other"/>
+	</person>
+	<imageAnnotations>
+		<ImageAnnotation>
+			<uniqueIdentifier root="1.2.3.4.5.6.2268009315.1952.1364854508.970"/>
+			<typeCode code="RECIST-123" codeSystemName="VKL" codeSystemVersion="XXX">
+				<iso:displayName xmlns:iso="uri:iso.org:21090" value="Baseline_Non-target_Lesion"/>
+			</typeCode>
+			<typeCode code="RECIST-123-1" codeSystemName="VKL" codeSystemVersion="XXX">
+				<iso:displayName xmlns:iso="uri:iso.org:21090" value="Post-Coordinated-Clause-1"/>
+			</typeCode>
+			<typeCode code="RECIST-123-2" codeSystemName="VKL" codeSystemVersion="XXX">
+				<iso:displayName xmlns:iso="uri:iso.org:21090" value="Post-Coordinated-Clause-2"/>
+			</typeCode>
+			<dateTime value="20130401171508"/>
+			<name value="My Annotation Name"/>
+			<comment value="Annotation comments of arbitrary length"/>
+			<precedentReferencedAnnotationUid root="1.444.555.666.777"/>
+			<templateUid root="1.2.3.2268009315.1952.1364854508.971"/>
+			<auditTrailCollection>
+				<AuditTrail>
+					<statusCode code="auditstatus1" codeSystemName="VKL">
+						<iso:displayName xmlns:iso="uri:iso.org:21090" value="Audit Status One"/>
+					</statusCode>
+					<dateTime value="20130401171508"/>
+					<changeReason code="reason1" codeSystemName="VKL">
+						<iso:displayName xmlns:iso="uri:iso.org:21090" value="Change Reason One"/>
+					</changeReason>
+					<worklistSubtaskUid root="2.25.209057498773071369934800544170338738540"/>
+					<comment value="Audit Trail comment"/>
+				</AuditTrail>
+			</auditTrailCollection>
+			<imagingPhysicalEntityCollection>
+				<ImagingPhysicalEntity>
+					<uniqueIdentifier root="2.25.209058290975468350063912986441228280172"/>
+					<typeCode code="imgPhysEntType1" codeSystemName="VKL">
+						<iso:displayName xmlns:iso="uri:iso.org:21090" value="Imaging Phys Entity Type One"/>
+					</typeCode>
+					<questionTypeCode code="imgPhysEntQt1" codeSystemName="VKL">
+						<iso:displayName xmlns:iso="uri:iso.org:21090" value="Imaging Phys Ent Question Type One"/>
+					</questionTypeCode>
+					<isPresent value="true"/>
+					<annotatorConfidence value="0.27"/>
+					<label value="Imgaging Phys Entity Label One"/>
+					<questionIndex value="3"/>
+					<imagingPhysicalEntityCharacteristicCollection>
+						<ImagingPhysicalEntityCharacteristic>
+							<typeCode code="imgPhysEntCharType1" codeSystemName="VKL">
+								<iso:displayName xmlns:iso="uri:iso.org:21090" value="Imaging Phys Ent Char Type One"/>
+							</typeCode>
+							<questionTypeCode code="imgPhysEntCharQt1" codeSystemName="VKL">
+								<iso:displayName xmlns:iso="uri:iso.org:21090" value="Imaging Phys Ent Char Question Type One"/>
+							</questionTypeCode>
+							<annotatorConfidence value="0.435"/>
+							<label value="Imgaging Physical Entity Char Label One"/>
+							<questionIndex value="4"/>
+							<characteristicQuantificationCollection>
+								<CharacteristicQuantification xsi:type="Quantile">
+									<annotatorConfidence value="0.378"/>
+									<characteristicQuantificationIndex value="1"/>
+									<label value="Quantile 2"/>
+									<valueLabel value="Quantile Value Label"/>
+									<valueDescription value="Quantile Value Description"/>
+									<comment value="Quantile Comment"/>
+									<bins value="4"/>
+									<selectedBin value="2"/>
+									<minValue value="5.25"/>
+									<maxValue value="123.987"/>
+								</CharacteristicQuantification>
+								<CharacteristicQuantification operator="NotEqual" xsi:type="Numerical">
+									<annotatorConfidence value="0.456"/>
+									<characteristicQuantificationIndex value="2"/>
+									<label value="Numerical Char Quantification"/>
+									<valueLabel value="Numerical Value Label"/>
+									<valueDescription value="Numerical Value Description"/>
+									<comment value="Numerical Comment"/>
+									<ucumString value="mm"/>
+									<value value="765.902"/>
+								</CharacteristicQuantification>
+								<CharacteristicQuantification type="Ordinal" xsi:type="Scale">
+									<annotatorConfidence value="0.469"/>
+									<characteristicQuantificationIndex value="3"/>
+									<label value="Scale Char Quantification"/>
+									<valueLabel value="Scale Value Label"/>
+									<valueDescription value="Scale Value Description"/>
+									<comment value="Scale Comment"/>
+									<value value="Scale Value"/>
+								</CharacteristicQuantification>
+								<CharacteristicQuantification xsi:type="NonQuantifiable">
+									<annotatorConfidence value="0.567"/>
+									<characteristicQuantificationIndex value="4"/>
+									<label value="NonQuantifiable Char Quantification"/>
+									<valueLabel value="NonQuantifiable Char Value Label"/>
+									<valueDescription value="NonQuantifiable Char Value Description"/>
+									<comment value="NonQuantifiable Char Comment"/>
+									<typeCode code="nonQunat1" codeSystemName="VKL">
+										<iso:displayName xmlns:iso="uri:iso.org:21090" value="NonQuantifiable Type One"/>
+									</typeCode>
+								</CharacteristicQuantification>
+								<CharacteristicQuantification maxOperator="LessThan" minOperator="GreaterThanEqual" xsi:type="Interval">
+									<annotatorConfidence value="0.366"/>
+									<characteristicQuantificationIndex value="5"/>
+									<label value="Interval 2"/>
+									<valueLabel value="Interval Value Label"/>
+									<valueDescription value="Interval Value Description"/>
+									<comment value="Interval Comment"/>
+									<minValue value="3.25"/>
+									<maxValue value="129.987"/>
+									<ucumString value="cm2"/>
+								</CharacteristicQuantification>
+							</characteristicQuantificationCollection>
+						</ImagingPhysicalEntityCharacteristic>
+						<ImagingPhysicalEntityCharacteristic>
+							<typeCode code="imgPhysEntCharType2" codeSystemName="VKL">
+								<iso:displayName xmlns:iso="uri:iso.org:21090" value="Imaging Phys Ent Char Type Two"/>
+							</typeCode>
+							<questionTypeCode code="imgPhysEntCharQt1" codeSystemName="VKL">
+								<iso:displayName xmlns:iso="uri:iso.org:21090" value="Imaging Phys Ent Char Question Type One"/>
+							</questionTypeCode>
+							<annotatorConfidence value="0.435"/>
+							<label value="Imgaging Physical Entity Char Label One"/>
+							<questionIndex value="4"/>
+							<characteristicQuantificationCollection>
+								<CharacteristicQuantification xsi:type="Quantile">
+									<annotatorConfidence value="0.378"/>
+									<characteristicQuantificationIndex value="1"/>
+									<label value="Quantile 2"/>
+									<valueLabel value="Quantile Value Label"/>
+									<valueDescription value="Quantile Value Description"/>
+									<comment value="Quantile Comment"/>
+									<bins value="4"/>
+									<selectedBin value="2"/>
+									<minValue value="5.25"/>
+									<maxValue value="123.987"/>
+								</CharacteristicQuantification>
+								<CharacteristicQuantification operator="NotEqual" xsi:type="Numerical">
+									<annotatorConfidence value="0.456"/>
+									<characteristicQuantificationIndex value="2"/>
+									<label value="Numerical Char Quantification"/>
+									<valueLabel value="Numerical Value Label"/>
+									<valueDescription value="Numerical Value Description"/>
+									<comment value="Numerical Comment"/>
+									<ucumString value="mm"/>
+									<value value="765.902"/>
+								</CharacteristicQuantification>
+								<CharacteristicQuantification type="Ordinal" xsi:type="Scale">
+									<annotatorConfidence value="0.469"/>
+									<characteristicQuantificationIndex value="3"/>
+									<label value="Scale Char Quantification"/>
+									<valueLabel value="Scale Value Label"/>
+									<valueDescription value="Scale Value Description"/>
+									<comment value="Scale Comment"/>
+									<value value="Scale Value"/>
+								</CharacteristicQuantification>
+								<CharacteristicQuantification xsi:type="NonQuantifiable">
+									<annotatorConfidence value="0.567"/>
+									<characteristicQuantificationIndex value="4"/>
+									<label value="NonQuantifiable Char Quantification"/>
+									<valueLabel value="NonQuantifiable Char Value Label"/>
+									<valueDescription value="NonQuantifiable Char Value Description"/>
+									<comment value="NonQuantifiable Char Comment"/>
+									<typeCode code="nonQunat1" codeSystemName="VKL">
+										<iso:displayName xmlns:iso="uri:iso.org:21090" value="NonQuantifiable Type One"/>
+									</typeCode>
+								</CharacteristicQuantification>
+								<CharacteristicQuantification maxOperator="LessThan" minOperator="GreaterThanEqual" xsi:type="Interval">
+									<annotatorConfidence value="0.366"/>
+									<characteristicQuantificationIndex value="5"/>
+									<label value="Interval 2"/>
+									<valueLabel value="Interval Value Label"/>
+									<valueDescription value="Interval Value Description"/>
+									<comment value="Interval Comment"/>
+									<minValue value="3.25"/>
+									<maxValue value="129.987"/>
+									<ucumString value="cm2"/>
+								</CharacteristicQuantification>
+							</characteristicQuantificationCollection>
+						</ImagingPhysicalEntityCharacteristic>
+					</imagingPhysicalEntityCharacteristicCollection>
+					<imagingObservationCharacteristicCollection>
+						<ImagingObservationCharacteristic>
+							<typeCode code="imgObsCharType1" codeSystemName="VKL">
+								<iso:displayName xmlns:iso="uri:iso.org:21090" value="Imaging Obs Char Type One"/>
+							</typeCode>
+							<questionTypeCode code="imgObsCharQt1" codeSystemName="VKL">
+								<iso:displayName xmlns:iso="uri:iso.org:21090" value="Imaging Obs Char Question Type One"/>
+							</questionTypeCode>
+							<annotatorConfidence value="0.38"/>
+							<label value="Imgaging Observation Char Label One"/>
+							<comment value="Imaging Observation Char Comment One"/>
+							<questionIndex value="2"/>
+							<characteristicQuantificationCollection>
+								<CharacteristicQuantification xsi:type="Quantile">
+									<annotatorConfidence value="0.378"/>
+									<characteristicQuantificationIndex value="1"/>
+									<label value="Quantile 2"/>
+									<valueLabel value="Quantile Value Label"/>
+									<valueDescription value="Quantile Value Description"/>
+									<comment value="Quantile Comment"/>
+									<bins value="4"/>
+									<selectedBin value="2"/>
+									<minValue value="5.25"/>
+									<maxValue value="123.987"/>
+								</CharacteristicQuantification>
+								<CharacteristicQuantification operator="NotEqual" xsi:type="Numerical">
+									<annotatorConfidence value="0.456"/>
+									<characteristicQuantificationIndex value="2"/>
+									<label value="Numerical Char Quantification"/>
+									<valueLabel value="Numerical Value Label"/>
+									<valueDescription value="Numerical Value Description"/>
+									<comment value="Numerical Comment"/>
+									<ucumString value="mm"/>
+									<value value="765.902"/>
+								</CharacteristicQuantification>
+								<CharacteristicQuantification type="Ordinal" xsi:type="Scale">
+									<annotatorConfidence value="0.469"/>
+									<characteristicQuantificationIndex value="3"/>
+									<label value="Scale Char Quantification"/>
+									<valueLabel value="Scale Value Label"/>
+									<valueDescription value="Scale Value Description"/>
+									<comment value="Scale Comment"/>
+									<value value="Scale Value"/>
+								</CharacteristicQuantification>
+								<CharacteristicQuantification xsi:type="NonQuantifiable">
+									<annotatorConfidence value="0.567"/>
+									<characteristicQuantificationIndex value="4"/>
+									<label value="NonQuantifiable Char Quantification"/>
+									<valueLabel value="NonQuantifiable Char Value Label"/>
+									<valueDescription value="NonQuantifiable Char Value Description"/>
+									<comment value="NonQuantifiable Char Comment"/>
+									<typeCode code="nonQunat1" codeSystemName="VKL">
+										<iso:displayName xmlns:iso="uri:iso.org:21090" value="NonQuantifiable Type One"/>
+									</typeCode>
+								</CharacteristicQuantification>
+								<CharacteristicQuantification maxOperator="LessThan" minOperator="GreaterThanEqual" xsi:type="Interval">
+									<annotatorConfidence value="0.366"/>
+									<characteristicQuantificationIndex value="5"/>
+									<label value="Interval 2"/>
+									<valueLabel value="Interval Value Label"/>
+									<valueDescription value="Interval Value Description"/>
+									<comment value="Interval Comment"/>
+									<minValue value="3.25"/>
+									<maxValue value="129.987"/>
+									<ucumString value="cm2"/>
+								</CharacteristicQuantification>
+							</characteristicQuantificationCollection>
+						</ImagingObservationCharacteristic>
+					</imagingObservationCharacteristicCollection>
+				</ImagingPhysicalEntity>
+			</imagingPhysicalEntityCollection>
+			<calculationEntityCollection>
+				<CalculationEntity>
+					<uniqueIdentifier root="2.25.209059875697174960379193532507322900844"/>
+					<typeCode code="calcType1" codeSystemName="VKL">
+						<iso:displayName xmlns:iso="uri:iso.org:21090" value="Calculation Type One"/>
+					</typeCode>
+					<questionTypeCode code="calcQt1" codeSystemName="VKL">
+						<iso:displayName xmlns:iso="uri:iso.org:21090" value="Calculation Question Type One"/>
+					</questionTypeCode>
+					<description value="Calculation Descr. One"/>
+					<mathML value="&lt;math>&lt;ml/>&lt;/math>"/>
+					<questionIndex value="5"/>
+					<calculationResultCollection>
+						<CalculationResult type="Array" xsi:type="CompactCalculationResult">
+							<unitOfMeasure value="m"/>
+							<dataType code="calcDT1" codeSystemName="VKL">
+								<iso:displayName xmlns:iso="uri:iso.org:21090" value="Calculation Data Type One"/>
+							</dataType>
+							<dimensionCollection>
+								<Dimension>
+									<index value="1"/>
+									<size value="3"/>
+									<label value="Dimension One"/>
+								</Dimension>
+							</dimensionCollection>
+							<value value="1.2,3.4,555"/>
+							<encoding code="calcEnc1" codeSystemName="VKL">
+								<iso:displayName xmlns:iso="uri:iso.org:21090" value="Calculation Encoding One"/>
+							</encoding>
+							<compression code="calcComp1" codeSystemName="VKL">
+								<iso:displayName xmlns:iso="uri:iso.org:21090" value="Calculation Compression One"/>
+							</compression>
+						</CalculationResult>
+						<CalculationResult type="Array" xsi:type="ExtendedCalculationResult">
+							<unitOfMeasure value="m"/>
+							<dataType code="calcDT1" codeSystemName="VKL">
+								<iso:displayName xmlns:iso="uri:iso.org:21090" value="Calculation Data Type One"/>
+							</dataType>
+							<dimensionCollection>
+								<Dimension>
+									<index value="1"/>
+									<size value="3"/>
+									<label value="Dimension One"/>
+								</Dimension>
+							</dimensionCollection>
+							<calculationDataCollection>
+								<CalculationData>
+									<value value="2.1415926"/>
+									<coordinateCollection>
+										<Coordinate>
+											<dimensionIndex value="1"/>
+											<position value="2"/>
+										</Coordinate>
+									</coordinateCollection>
+								</CalculationData>
+							</calculationDataCollection>
+						</CalculationResult>
+					</calculationResultCollection>
+					<algorithm>
+						<name value="Algorithm Name One"/>
+						<type code="AlgoType1" codeSystemName="VKL">
+							<iso:displayName xmlns:iso="uri:iso.org:21090" value="Algorithm Type One"/>
+						</type>
+						<uniqueIdentifier root="2.25.209059875617946797864929194913778950508"/>
+						<version value="Algorithm Version One"/>
+						<description value="Algorithm Description"/>
+						<parameterCollection>
+							<Parameter>
+								<name value="Param One"/>
+								<value value="Value One"/>
+								<dataType code="ParamType1" codeSystemName="VKL">
+									<iso:displayName xmlns:iso="uri:iso.org:21090" value="Param Data Type One"/>
+								</dataType>
+							</Parameter>
+						</parameterCollection>
+					</algorithm>
+				</CalculationEntity>
+			</calculationEntityCollection>
+			<inferenceEntityCollection>
+				<InferenceEntity>
+					<uniqueIdentifier root="2.25.209057498693843207420536206576794788204"/>
+					<imageEvidence value="false"/>
+					<isPresent value="false"/>
+					<typeCode code="inferenceType1" codeSystemName="VKL">
+						<iso:displayName xmlns:iso="uri:iso.org:21090" value="Inference Type One"/>
+					</typeCode>
+					<questionTypeCode code="inferenceQt1" codeSystemName="VKL">
+						<iso:displayName xmlns:iso="uri:iso.org:21090" value="Inference Question Type One"/>
+					</questionTypeCode>
+					<annotatorConfidence value="0.33"/>
+					<description value="Inference Descr"/>
+					<label value="Inference Label"/>
+					<questionIndex value="0"/>
+				</InferenceEntity>
+			</inferenceEntityCollection>
+			<annotationRoleEntityCollection>
+				<AnnotationRoleEntity>
+					<uniqueIdentifier root="2.25.209056706332989902262895933543747477868"/>
+					<roleCode code="role1" codeSystemName="VKL">
+						<iso:displayName xmlns:iso="uri:iso.org:21090" value="Role One"/>
+					</roleCode>
+					<questionTypeCode code="roleQt1" codeSystemName="VKL">
+						<iso:displayName xmlns:iso="uri:iso.org:21090" value="Role Question Type One"/>
+					</questionTypeCode>
+					<roleSequenceNumber value="17"/>
+				</AnnotationRoleEntity>
+			</annotationRoleEntityCollection>
+			<lesionObservationEntityCollection>
+				<LesionObservationEntity xsi:type="GeneralLesionObservationEntity">
+					<uniqueIdentifier root="2.25.209057498693843207420536488051771498860"/>
+					<lesionUniqueIdentifier root="2.25.209057498773071369934800825645315449196"/>
+					<isAdditionalObservation value="false"/>
+					<trackingIdentifier value="lesionOne"/>
+					<lesionType code="lesionType1" codeSystemName="VKL">
+						<iso:displayName xmlns:iso="uri:iso.org:21090" value="Lesion Type One"/>
+					</lesionType>
+					<reconstructionInterval code="recoInterval1" codeSystemName="VKL">
+						<iso:displayName xmlns:iso="uri:iso.org:21090" value="Reco Interval One"/>
+					</reconstructionInterval>
+					<laterality code="laterality1" codeSystemName="VKL">
+						<iso:displayName xmlns:iso="uri:iso.org:21090" value="Laterality One"/>
+					</laterality>
+				</LesionObservationEntity>
+				<LesionObservationEntity xsi:type="TimePointLesionObservationEntity">
+					<uniqueIdentifier root="2.25.209057498693843207420536769526748209516"/>
+					<lesionUniqueIdentifier root="2.25.209057498773071369934801107120292159852"/>
+					<isAdditionalObservation value="false"/>
+					<calibration value="false"/>
+					<predecessorLesionTrackingUid root="2.25.209057498693843207420537051001724920172"/>
+					<comment value="TimePoint Lesion Observation Comment"/>
+					<therapeuticResponse code="theraResp1" codeSystemName="VKL">
+						<iso:displayName xmlns:iso="uri:iso.org:21090" value="Thera Response One"/>
+					</therapeuticResponse>
+					<qualitativeAssessment code="qualAssess1" codeSystemName="VKL">
+						<iso:displayName xmlns:iso="uri:iso.org:21090" value="Qualitative Assessment One"/>
+					</qualitativeAssessment>
+					<canEvaluateLesion value="true"/>
+					<reasonUnableToEvaluate code="unableToEval1" codeSystemName="VKL">
+						<iso:displayName xmlns:iso="uri:iso.org:21090" value="Unable To Eval One"/>
+					</reasonUnableToEvaluate>
+					<canMeasureLesion value="true"/>
+					<reasonUnableToMeasure code="unableToMeasure1" codeSystemName="VKL">
+						<iso:displayName xmlns:iso="uri:iso.org:21090" value="Unable To Measure One"/>
+					</reasonUnableToMeasure>
+					<isUnequivocalProgression value="false"/>
+				</LesionObservationEntity>
+			</lesionObservationEntityCollection>
+			<imagingObservationEntityCollection>
+				<ImagingObservationEntity>
+					<uniqueIdentifier root="2.25.209057498773071369934801388595268870508"/>
+					<typeCode code="imgObsEntType1-R" codeSystemName="VKL">
+						<iso:displayName xmlns:iso="uri:iso.org:21090" value="Imaging Obs Entity Type One"/>
+					</typeCode>
+					<questionTypeCode code="imgObsEntQt1" codeSystemName="VKL">
+						<iso:displayName xmlns:iso="uri:iso.org:21090" value="Imaging Obs Ent Question Type One"/>
+					</questionTypeCode>
+					<annotatorConfidence value="0.37"/>
+					<label value="Imgaging Observation Entity Label One"/>
+					<comment value="Imaging Observation Entity Comment One"/>
+					<isPresent value="true"/>
+					<questionIndex value="1"/>
+					<imagingObservationCharacteristicCollection>
+						<ImagingObservationCharacteristic>
+							<typeCode code="imgObsCharType1" codeSystemName="VKL">
+								<iso:displayName xmlns:iso="uri:iso.org:21090" value="Imaging Obs Char Type One R"/>
+							</typeCode>
+							<questionTypeCode code="imgObsCharQt1" codeSystemName="VKL">
+								<iso:displayName xmlns:iso="uri:iso.org:21090" value="Imaging Obs Char Question Type One"/>
+							</questionTypeCode>
+							<annotatorConfidence value="0.38"/>
+							<label value="Imgaging Observation Char Label One"/>
+							<comment value="Imaging Observation Char Comment One"/>
+							<questionIndex value="2"/>
+							<characteristicQuantificationCollection>
+								<CharacteristicQuantification xsi:type="Quantile">
+									<annotatorConfidence value="0.378"/>
+									<characteristicQuantificationIndex value="1"/>
+									<label value="Quantile 2"/>
+									<valueLabel value="Quantile Value Label"/>
+									<valueDescription value="Quantile Value Description"/>
+									<comment value="Quantile Comment"/>
+									<bins value="4"/>
+									<selectedBin value="2"/>
+									<minValue value="5.25"/>
+									<maxValue value="123.987"/>
+								</CharacteristicQuantification>
+								<CharacteristicQuantification operator="NotEqual" xsi:type="Numerical">
+									<annotatorConfidence value="0.456"/>
+									<characteristicQuantificationIndex value="2"/>
+									<label value="Numerical Char Quantification"/>
+									<valueLabel value="Numerical Value Label"/>
+									<valueDescription value="Numerical Value Description"/>
+									<comment value="Numerical Comment"/>
+									<ucumString value="mm"/>
+									<value value="765.902"/>
+								</CharacteristicQuantification>
+								<CharacteristicQuantification type="Ordinal" xsi:type="Scale">
+									<annotatorConfidence value="0.469"/>
+									<characteristicQuantificationIndex value="3"/>
+									<label value="Scale Char Quantification"/>
+									<valueLabel value="Scale Value Label"/>
+									<valueDescription value="Scale Value Description"/>
+									<comment value="Scale Comment"/>
+									<value value="Scale Value"/>
+								</CharacteristicQuantification>
+								<CharacteristicQuantification xsi:type="NonQuantifiable">
+									<annotatorConfidence value="0.567"/>
+									<characteristicQuantificationIndex value="4"/>
+									<label value="NonQuantifiable Char Quantification"/>
+									<valueLabel value="NonQuantifiable Char Value Label"/>
+									<valueDescription value="NonQuantifiable Char Value Description"/>
+									<comment value="NonQuantifiable Char Comment"/>
+									<typeCode code="nonQunat1" codeSystemName="VKL">
+										<iso:displayName xmlns:iso="uri:iso.org:21090" value="NonQuantifiable Type One"/>
+									</typeCode>
+								</CharacteristicQuantification>
+								<CharacteristicQuantification maxOperator="LessThan" minOperator="GreaterThanEqual" xsi:type="Interval">
+									<annotatorConfidence value="0.366"/>
+									<characteristicQuantificationIndex value="5"/>
+									<label value="Interval 2"/>
+									<valueLabel value="Interval Value Label"/>
+									<valueDescription value="Interval Value Description"/>
+									<comment value="Interval Comment"/>
+									<minValue value="3.25"/>
+									<maxValue value="129.987"/>
+									<ucumString value="cm2"/>
+								</CharacteristicQuantification>
+							</characteristicQuantificationCollection>
+						</ImagingObservationCharacteristic>
+					</imagingObservationCharacteristicCollection>
+				</ImagingObservationEntity>
+			</imagingObservationEntityCollection>
+			<taskContextEntityCollection>
+				<TaskContextEntity>
+					<uniqueIdentifier root="2.25.209056706332989902262895089118817345900"/>
+					<worklistTaskUid root="2.25.209056706412218064777159426712361296236"/>
+					<worklistTaskName value="Task uno"/>
+					<worklistTaskDescription value="Task uno descr"/>
+					<worklistTaskCategory code="tsk1" codeSystemName="VKL">
+						<iso:displayName xmlns:iso="uri:iso.org:21090" value="Task Category One"/>
+					</worklistTaskCategory>
+					<worklistTaskLevel code="tsklvl1" codeSystemName="VKL">
+						<iso:displayName xmlns:iso="uri:iso.org:21090" value="Task Level One"/>
+					</worklistTaskLevel>
+					<worklistTaskType code="tsktype1" codeSystemName="VKL">
+						<iso:displayName xmlns:iso="uri:iso.org:21090" value="Task Type One"/>
+					</worklistTaskType>
+					<worklistTaskRepeatType code="tskrpttype1" codeSystemName="VKL">
+						<iso:displayName xmlns:iso="uri:iso.org:21090" value="Task One Repeate Type"/>
+					</worklistTaskRepeatType>
+					<worklistTaskVariabilityType code="tskvartype1" codeSystemName="VKL">
+						<iso:displayName xmlns:iso="uri:iso.org:21090" value="Task One Variability Type"/>
+					</worklistTaskVariabilityType>
+					<worklistTaskVersion value="TaskOneVer"/>
+					<worklistSubtaskUid root="2.25.209056706332989902262895370593794056556"/>
+					<worklistSubtaskName value="Subtask uno"/>
+					<worklistSubtaskStartDateTime value="20130401171508"/>
+					<worklistSubtaskClosedDateTime value="20130401171508"/>
+				</TaskContextEntity>
+			</taskContextEntityCollection>
+			<segmentationEntityCollection>
+				<SegmentationEntity xsi:type="DicomSegmentationEntity">
+					<uniqueIdentifier root="2.25.209061460260425245665945403386329620844"/>
+					<sopInstanceUid root="1.2.840.10008.5.1.4.1.1.1.999999999.3"/>
+					<sopClassUid root="1.2.840.10008.5.1.4.1.1.66.4"/>
+					<referencedSopInstanceUid root="1.2.333.6666666666666.9"/>
+					<segmentNumber value="1"/>
+				</SegmentationEntity>
+			</segmentationEntityCollection>
+			<markupEntityCollection>
+				<MarkupEntity xsi:type="TwoDimensionPoint">
+					<uniqueIdentifier root="2.25.209061460339653408180209740979873571180"/>
+					<questionTypeCode code="geoShapeQt1" codeSystemName="VKL">
+						<iso:displayName xmlns:iso="uri:iso.org:21090" value="GeoShape Question Type One"/>
+					</questionTypeCode>
+					<shapeIdentifier value="500"/>
+					<label value="GeoShape Label "/>
+					<description value="GeoShape Descr "/>
+					<includeFlag value="true"/>
+					<comment value="GeoShape Comment "/>
+					<lineColor value="GeoShapeLineColor"/>
+					<lineOpacity value="GeoShapeLineOpacity"/>
+					<lineStyle value="GeoShapeLineStyle"/>
+					<lineThickness value="GeoShapeLineThickness"/>
+					<questionIndex value="100"/>
+					<interpolationMethod code="interMethod1" codeSystemName="VKL">
+						<iso:displayName xmlns:iso="uri:iso.org:21090" value="Interpolation Method One"/>
+					</interpolationMethod>
+					<imageReferenceUid root="1.2.333.6666666666666.9"/>
+					<referencedFrameNumber value="1"/>
+					<twoDimensionSpatialCoordinateCollection>
+						<TwoDimensionSpatialCoordinate>
+							<coordinateIndex value="0"/>
+							<x value="20"/>
+							<y value="40"/>
+						</TwoDimensionSpatialCoordinate>
+					</twoDimensionSpatialCoordinateCollection>
+				</MarkupEntity>
+				<MarkupEntity xsi:type="TwoDimensionCircle">
+					<uniqueIdentifier root="2.25.209061460260425245665945684861306331500"/>
+					<questionTypeCode code="geoShapeQt1" codeSystemName="VKL">
+						<iso:displayName xmlns:iso="uri:iso.org:21090" value="GeoShape Question Type One"/>
+					</questionTypeCode>
+					<shapeIdentifier value="501"/>
+					<label value="eoShape Label "/>
+					<description value="eoShape Descr "/>
+					<includeFlag value="true"/>
+					<comment value="eoShape Comment "/>
+					<lineColor value="eoShapeLineColor"/>
+					<lineOpacity value="eoShapeLineOpacity"/>
+					<lineStyle value="eoShapeLineStyle"/>
+					<lineThickness value="eoShapeLineThickness"/>
+					<questionIndex value="101"/>
+					<interpolationMethod code="interMethod1" codeSystemName="VKL">
+						<iso:displayName xmlns:iso="uri:iso.org:21090" value="Interpolation Method One"/>
+					</interpolationMethod>
+					<uri value="test::uri-schema"/>
+					<twoDimensionSpatialCoordinateCollection>
+						<TwoDimensionSpatialCoordinate>
+							<coordinateIndex value="0"/>
+							<x value="20"/>
+							<y value="40"/>
+						</TwoDimensionSpatialCoordinate>
+						<TwoDimensionSpatialCoordinate>
+							<coordinateIndex value="1"/>
+							<x value="10"/>
+							<y value="15"/>
+						</TwoDimensionSpatialCoordinate>
+					</twoDimensionSpatialCoordinateCollection>
+				</MarkupEntity>
+				<MarkupEntity xsi:type="TwoDimensionEllipse">
+					<uniqueIdentifier root="2.25.209061460339653408180210022454850281836"/>
+					<questionTypeCode code="geoShapeQt1" codeSystemName="VKL">
+						<iso:displayName xmlns:iso="uri:iso.org:21090" value="GeoShape Question Type One"/>
+					</questionTypeCode>
+					<shapeIdentifier value="502"/>
+					<label value="oShape Label "/>
+					<description value="oShape Descr "/>
+					<includeFlag value="true"/>
+					<comment value="oShape Comment "/>
+					<lineColor value="oShapeLineColor"/>
+					<lineOpacity value="oShapeLineOpacity"/>
+					<lineStyle value="oShapeLineStyle"/>
+					<lineThickness value="oShapeLineThickness"/>
+					<questionIndex value="102"/>
+					<interpolationMethod code="interMethod1" codeSystemName="VKL">
+						<iso:displayName xmlns:iso="uri:iso.org:21090" value="Interpolation Method One"/>
+					</interpolationMethod>
+					<imageReferenceUid root="1.2.333.6666666666666.9"/>
+					<referencedFrameNumber value="1"/>
+					<twoDimensionSpatialCoordinateCollection>
+						<TwoDimensionSpatialCoordinate>
+							<coordinateIndex value="0"/>
+							<x value="20"/>
+							<y value="40"/>
+						</TwoDimensionSpatialCoordinate>
+						<TwoDimensionSpatialCoordinate>
+							<coordinateIndex value="1"/>
+							<x value="30"/>
+							<y value="50"/>
+						</TwoDimensionSpatialCoordinate>
+						<TwoDimensionSpatialCoordinate>
+							<coordinateIndex value="2"/>
+							<x value="45"/>
+							<y value="25"/>
+						</TwoDimensionSpatialCoordinate>
+						<TwoDimensionSpatialCoordinate>
+							<coordinateIndex value="3"/>
+							<x value="55"/>
+							<y value="35"/>
+						</TwoDimensionSpatialCoordinate>
+					</twoDimensionSpatialCoordinateCollection>
+				</MarkupEntity>
+				<MarkupEntity xsi:type="TwoDimensionPolyline">
+					<uniqueIdentifier root="2.25.209061460260425245665945966336283042156"/>
+					<questionTypeCode code="geoShapeQt1" codeSystemName="VKL">
+						<iso:displayName xmlns:iso="uri:iso.org:21090" value="GeoShape Question Type One"/>
+					</questionTypeCode>
+					<shapeIdentifier value="502"/>
+					<label value="oShape Label "/>
+					<description value="oShape Descr "/>
+					<includeFlag value="true"/>
+					<comment value="oShape Comment "/>
+					<lineColor value="oShapeLineColor"/>
+					<lineOpacity value="oShapeLineOpacity"/>
+					<lineStyle value="oShapeLineStyle"/>
+					<lineThickness value="oShapeLineThickness"/>
+					<questionIndex value="102"/>
+					<interpolationMethod code="interMethod1" codeSystemName="VKL">
+						<iso:displayName xmlns:iso="uri:iso.org:21090" value="Interpolation Method One"/>
+					</interpolationMethod>
+					<imageReferenceUid root="1.2.333.6666666666666.9"/>
+					<referencedFrameNumber value="1"/>
+					<twoDimensionSpatialCoordinateCollection>
+						<TwoDimensionSpatialCoordinate>
+							<coordinateIndex value="0"/>
+							<x value="20"/>
+							<y value="40"/>
+						</TwoDimensionSpatialCoordinate>
+						<TwoDimensionSpatialCoordinate>
+							<coordinateIndex value="1"/>
+							<x value="30"/>
+							<y value="50"/>
+						</TwoDimensionSpatialCoordinate>
+						<TwoDimensionSpatialCoordinate>
+							<coordinateIndex value="2"/>
+							<x value="45"/>
+							<y value="25"/>
+						</TwoDimensionSpatialCoordinate>
+						<TwoDimensionSpatialCoordinate>
+							<coordinateIndex value="3"/>
+							<x value="55"/>
+							<y value="35"/>
+						</TwoDimensionSpatialCoordinate>
+					</twoDimensionSpatialCoordinateCollection>
+				</MarkupEntity>
+				<MarkupEntity xsi:type="TwoDimensionMultiPoint">
+					<uniqueIdentifier root="2.25.209061460339653408180210303929826992492"/>
+					<questionTypeCode code="geoShapeQt1" codeSystemName="VKL">
+						<iso:displayName xmlns:iso="uri:iso.org:21090" value="GeoShape Question Type One"/>
+					</questionTypeCode>
+					<shapeIdentifier value="503"/>
+					<label value="Shape Label "/>
+					<description value="Shape Descr "/>
+					<includeFlag value="true"/>
+					<comment value="Shape Comment "/>
+					<lineColor value="ShapeLineColor"/>
+					<lineOpacity value="ShapeLineOpacity"/>
+					<lineStyle value="ShapeLineStyle"/>
+					<lineThickness value="ShapeLineThickness"/>
+					<questionIndex value="103"/>
+					<interpolationMethod code="interMethod1" codeSystemName="VKL">
+						<iso:displayName xmlns:iso="uri:iso.org:21090" value="Interpolation Method One"/>
+					</interpolationMethod>
+					<imageReferenceUid root="1.2.333.6666666666666.9"/>
+					<referencedFrameNumber value="1"/>
+					<twoDimensionSpatialCoordinateCollection>
+						<TwoDimensionSpatialCoordinate>
+							<coordinateIndex value="0"/>
+							<x value="20"/>
+							<y value="40"/>
+						</TwoDimensionSpatialCoordinate>
+						<TwoDimensionSpatialCoordinate>
+							<coordinateIndex value="1"/>
+							<x value="30"/>
+							<y value="50"/>
+						</TwoDimensionSpatialCoordinate>
+						<TwoDimensionSpatialCoordinate>
+							<coordinateIndex value="2"/>
+							<x value="45"/>
+							<y value="25"/>
+						</TwoDimensionSpatialCoordinate>
+						<TwoDimensionSpatialCoordinate>
+							<coordinateIndex value="3"/>
+							<x value="55"/>
+							<y value="35"/>
+						</TwoDimensionSpatialCoordinate>
+					</twoDimensionSpatialCoordinateCollection>
+				</MarkupEntity>
+				<MarkupEntity xsi:type="ThreeDimensionPoint">
+					<uniqueIdentifier root="2.25.209061460260425245665946247811259752812"/>
+					<questionTypeCode code="geoShapeQt1" codeSystemName="VKL">
+						<iso:displayName xmlns:iso="uri:iso.org:21090" value="GeoShape Question Type One"/>
+					</questionTypeCode>
+					<shapeIdentifier value="504"/>
+					<label value="hape Label "/>
+					<description value="hape Descr "/>
+					<includeFlag value="true"/>
+					<comment value="hape Comment "/>
+					<lineColor value="hapeLineColor"/>
+					<lineOpacity value="hapeLineOpacity"/>
+					<lineStyle value="hapeLineStyle"/>
+					<lineThickness value="hapeLineThickness"/>
+					<questionIndex value="104"/>
+					<interpolationMethod code="interMethod1" codeSystemName="VKL">
+						<iso:displayName xmlns:iso="uri:iso.org:21090" value="Interpolation Method One"/>
+					</interpolationMethod>
+					<frameOfReferenceUid root="1.2.840.10008.5.1.4.1.1.1.999999999.3"/>
+					<fiducialUid root="2.25.209061460339653408180210585404803703148"/>
+					<threeDimensionSpatialCoordinateCollection>
+						<ThreeDimensionSpatialCoordinate>
+							<coordinateIndex value="0"/>
+							<x value="10"/>
+							<y value="10"/>
+							<z value="10"/>
+						</ThreeDimensionSpatialCoordinate>
+					</threeDimensionSpatialCoordinateCollection>
+				</MarkupEntity>
+				<MarkupEntity xsi:type="ThreeDimensionEllipse">
+					<uniqueIdentifier root="2.25.209061460260425245665946529286236463468"/>
+					<questionTypeCode code="geoShapeQt1" codeSystemName="VKL">
+						<iso:displayName xmlns:iso="uri:iso.org:21090" value="GeoShape Question Type One"/>
+					</questionTypeCode>
+					<shapeIdentifier value="505"/>
+					<label value="ape Label "/>
+					<description value="ape Descr "/>
+					<includeFlag value="true"/>
+					<comment value="ape Comment "/>
+					<lineColor value="apeLineColor"/>
+					<lineOpacity value="apeLineOpacity"/>
+					<lineStyle value="apeLineStyle"/>
+					<lineThickness value="apeLineThickness"/>
+					<questionIndex value="105"/>
+					<interpolationMethod code="interMethod1" codeSystemName="VKL">
+						<iso:displayName xmlns:iso="uri:iso.org:21090" value="Interpolation Method One"/>
+					</interpolationMethod>
+					<frameOfReferenceUid root="1.2.840.10008.5.1.4.1.1.1.999999999.3"/>
+					<fiducialUid root="2.25.209061460339653408180210866879780413804"/>
+					<threeDimensionSpatialCoordinateCollection>
+						<ThreeDimensionSpatialCoordinate>
+							<coordinateIndex value="0"/>
+							<x value="-10"/>
+							<y value="-10"/>
+							<z value="-10"/>
+						</ThreeDimensionSpatialCoordinate>
+						<ThreeDimensionSpatialCoordinate>
+							<coordinateIndex value="1"/>
+							<x value="10"/>
+							<y value="10"/>
+							<z value="10"/>
+						</ThreeDimensionSpatialCoordinate>
+						<ThreeDimensionSpatialCoordinate>
+							<coordinateIndex value="2"/>
+							<x value="-20"/>
+							<y value="-20"/>
+							<z value="-20"/>
+						</ThreeDimensionSpatialCoordinate>
+						<ThreeDimensionSpatialCoordinate>
+							<coordinateIndex value="3"/>
+							<x value="20"/>
+							<y value="20"/>
+							<z value="20"/>
+						</ThreeDimensionSpatialCoordinate>
+					</threeDimensionSpatialCoordinateCollection>
+				</MarkupEntity>
+				<MarkupEntity xsi:type="ThreeDimensionEllipsoid">
+					<uniqueIdentifier root="2.25.209061460260425245665946810761213174124"/>
+					<questionTypeCode code="geoShapeQt1" codeSystemName="VKL">
+						<iso:displayName xmlns:iso="uri:iso.org:21090" value="GeoShape Question Type One"/>
+					</questionTypeCode>
+					<shapeIdentifier value="506"/>
+					<label value="pe Label "/>
+					<description value="pe Descr "/>
+					<includeFlag value="true"/>
+					<comment value="pe Comment "/>
+					<lineColor value="peLineColor"/>
+					<lineOpacity value="peLineOpacity"/>
+					<lineStyle value="peLineStyle"/>
+					<lineThickness value="peLineThickness"/>
+					<questionIndex value="106"/>
+					<interpolationMethod code="interMethod1" codeSystemName="VKL">
+						<iso:displayName xmlns:iso="uri:iso.org:21090" value="Interpolation Method One"/>
+					</interpolationMethod>
+					<frameOfReferenceUid root="1.2.840.10008.5.1.4.1.1.1.999999999.3"/>
+					<fiducialUid root="2.25.209062252621278550823587083794260484460"/>
+					<threeDimensionSpatialCoordinateCollection>
+						<ThreeDimensionSpatialCoordinate>
+							<coordinateIndex value="0"/>
+							<x value="-10"/>
+							<y value="-10"/>
+							<z value="-10"/>
+						</ThreeDimensionSpatialCoordinate>
+						<ThreeDimensionSpatialCoordinate>
+							<coordinateIndex value="1"/>
+							<x value="10"/>
+							<y value="10"/>
+							<z value="10"/>
+						</ThreeDimensionSpatialCoordinate>
+						<ThreeDimensionSpatialCoordinate>
+							<coordinateIndex value="2"/>
+							<x value="-20"/>
+							<y value="-20"/>
+							<z value="-20"/>
+						</ThreeDimensionSpatialCoordinate>
+						<ThreeDimensionSpatialCoordinate>
+							<coordinateIndex value="3"/>
+							<x value="20"/>
+							<y value="20"/>
+							<z value="20"/>
+						</ThreeDimensionSpatialCoordinate>
+						<ThreeDimensionSpatialCoordinate>
+							<coordinateIndex value="4"/>
+							<x value="-30"/>
+							<y value="-30"/>
+							<z value="-30"/>
+						</ThreeDimensionSpatialCoordinate>
+						<ThreeDimensionSpatialCoordinate>
+							<coordinateIndex value="5"/>
+							<x value="30"/>
+							<y value="30"/>
+							<z value="30"/>
+						</ThreeDimensionSpatialCoordinate>
+					</threeDimensionSpatialCoordinateCollection>
+				</MarkupEntity>
+				<MarkupEntity xsi:type="ThreeDimensionPolygon">
+					<uniqueIdentifier root="2.25.209062252700506713337851421387804434796"/>
+					<questionTypeCode code="geoShapeQt1" codeSystemName="VKL">
+						<iso:displayName xmlns:iso="uri:iso.org:21090" value="GeoShape Question Type One"/>
+					</questionTypeCode>
+					<shapeIdentifier value="507"/>
+					<label value="e Label "/>
+					<description value="e Descr "/>
+					<includeFlag value="true"/>
+					<comment value="e Comment "/>
+					<lineColor value="eLineColor"/>
+					<lineOpacity value="eLineOpacity"/>
+					<lineStyle value="eLineStyle"/>
+					<lineThickness value="eLineThickness"/>
+					<questionIndex value="107"/>
+					<interpolationMethod code="interMethod1" codeSystemName="VKL">
+						<iso:displayName xmlns:iso="uri:iso.org:21090" value="Interpolation Method One"/>
+					</interpolationMethod>
+					<frameOfReferenceUid root="1.2.840.10008.5.1.4.1.1.1.999999999.3"/>
+					<fiducialUid root="2.25.209062252621278550823587365269237195116"/>
+					<threeDimensionSpatialCoordinateCollection>
+						<ThreeDimensionSpatialCoordinate>
+							<coordinateIndex value="0"/>
+							<x value="-10"/>
+							<y value="-10"/>
+							<z value="-10"/>
+						</ThreeDimensionSpatialCoordinate>
+						<ThreeDimensionSpatialCoordinate>
+							<coordinateIndex value="1"/>
+							<x value="10"/>
+							<y value="10"/>
+							<z value="10"/>
+						</ThreeDimensionSpatialCoordinate>
+						<ThreeDimensionSpatialCoordinate>
+							<coordinateIndex value="2"/>
+							<x value="-20"/>
+							<y value="-20"/>
+							<z value="-20"/>
+						</ThreeDimensionSpatialCoordinate>
+						<ThreeDimensionSpatialCoordinate>
+							<coordinateIndex value="3"/>
+							<x value="20"/>
+							<y value="20"/>
+							<z value="20"/>
+						</ThreeDimensionSpatialCoordinate>
+						<ThreeDimensionSpatialCoordinate>
+							<coordinateIndex value="4"/>
+							<x value="-30"/>
+							<y value="-30"/>
+							<z value="-30"/>
+						</ThreeDimensionSpatialCoordinate>
+						<ThreeDimensionSpatialCoordinate>
+							<coordinateIndex value="5"/>
+							<x value="30"/>
+							<y value="30"/>
+							<z value="30"/>
+						</ThreeDimensionSpatialCoordinate>
+					</threeDimensionSpatialCoordinateCollection>
+				</MarkupEntity>
+				<MarkupEntity xsi:type="ThreeDimensionPolyline">
+					<uniqueIdentifier root="2.25.209062252700506713337851702862781145452"/>
+					<questionTypeCode code="geoShapeQt1" codeSystemName="VKL">
+						<iso:displayName xmlns:iso="uri:iso.org:21090" value="GeoShape Question Type One"/>
+					</questionTypeCode>
+					<shapeIdentifier value="508"/>
+					<label value=" Label "/>
+					<description value=" Descr "/>
+					<includeFlag value="true"/>
+					<comment value=" Comment "/>
+					<lineColor value="LineColor"/>
+					<lineOpacity value="LineOpacity"/>
+					<lineStyle value="LineStyle"/>
+					<lineThickness value="LineThickness"/>
+					<questionIndex value="108"/>
+					<interpolationMethod code="interMethod1" codeSystemName="VKL">
+						<iso:displayName xmlns:iso="uri:iso.org:21090" value="Interpolation Method One"/>
+					</interpolationMethod>
+					<frameOfReferenceUid root="1.2.840.10008.5.1.4.1.1.1.999999999.3"/>
+					<fiducialUid root="2.25.209062252621278550823587646744213905772"/>
+					<threeDimensionSpatialCoordinateCollection>
+						<ThreeDimensionSpatialCoordinate>
+							<coordinateIndex value="0"/>
+							<x value="-10"/>
+							<y value="-10"/>
+							<z value="-10"/>
+						</ThreeDimensionSpatialCoordinate>
+						<ThreeDimensionSpatialCoordinate>
+							<coordinateIndex value="1"/>
+							<x value="10"/>
+							<y value="10"/>
+							<z value="10"/>
+						</ThreeDimensionSpatialCoordinate>
+						<ThreeDimensionSpatialCoordinate>
+							<coordinateIndex value="2"/>
+							<x value="-20"/>
+							<y value="-20"/>
+							<z value="-20"/>
+						</ThreeDimensionSpatialCoordinate>
+						<ThreeDimensionSpatialCoordinate>
+							<coordinateIndex value="3"/>
+							<x value="20"/>
+							<y value="20"/>
+							<z value="20"/>
+						</ThreeDimensionSpatialCoordinate>
+						<ThreeDimensionSpatialCoordinate>
+							<coordinateIndex value="4"/>
+							<x value="-30"/>
+							<y value="-30"/>
+							<z value="-30"/>
+						</ThreeDimensionSpatialCoordinate>
+						<ThreeDimensionSpatialCoordinate>
+							<coordinateIndex value="5"/>
+							<x value="30"/>
+							<y value="30"/>
+							<z value="30"/>
+						</ThreeDimensionSpatialCoordinate>
+					</threeDimensionSpatialCoordinateCollection>
+				</MarkupEntity>
+				<MarkupEntity xsi:type="ThreeDimensionMultiPoint">
+					<uniqueIdentifier root="2.25.209062252700506713337851984337757856108"/>
+					<questionTypeCode code="geoShapeQt1" codeSystemName="VKL">
+						<iso:displayName xmlns:iso="uri:iso.org:21090" value="GeoShape Question Type One"/>
+					</questionTypeCode>
+					<shapeIdentifier value="509"/>
+					<label value="Label "/>
+					<description value="Descr "/>
+					<includeFlag value="true"/>
+					<comment value="Comment "/>
+					<lineColor value="ineColor"/>
+					<lineOpacity value="ineOpacity"/>
+					<lineStyle value="ineStyle"/>
+					<lineThickness value="ineThickness"/>
+					<questionIndex value="109"/>
+					<interpolationMethod code="interMethod1" codeSystemName="VKL">
+						<iso:displayName xmlns:iso="uri:iso.org:21090" value="Interpolation Method One"/>
+					</interpolationMethod>
+					<frameOfReferenceUid root="1.2.840.10008.5.1.4.1.1.1.999999999.3"/>
+					<fiducialUid root="2.25.209062252621278550823587928219190616428"/>
+					<threeDimensionSpatialCoordinateCollection>
+						<ThreeDimensionSpatialCoordinate>
+							<coordinateIndex value="0"/>
+							<x value="-10"/>
+							<y value="-10"/>
+							<z value="-10"/>
+						</ThreeDimensionSpatialCoordinate>
+						<ThreeDimensionSpatialCoordinate>
+							<coordinateIndex value="1"/>
+							<x value="10"/>
+							<y value="10"/>
+							<z value="10"/>
+						</ThreeDimensionSpatialCoordinate>
+						<ThreeDimensionSpatialCoordinate>
+							<coordinateIndex value="2"/>
+							<x value="-20"/>
+							<y value="-20"/>
+							<z value="-20"/>
+						</ThreeDimensionSpatialCoordinate>
+						<ThreeDimensionSpatialCoordinate>
+							<coordinateIndex value="3"/>
+							<x value="20"/>
+							<y value="20"/>
+							<z value="20"/>
+						</ThreeDimensionSpatialCoordinate>
+						<ThreeDimensionSpatialCoordinate>
+							<coordinateIndex value="4"/>
+							<x value="-30"/>
+							<y value="-30"/>
+							<z value="-30"/>
+						</ThreeDimensionSpatialCoordinate>
+						<ThreeDimensionSpatialCoordinate>
+							<coordinateIndex value="5"/>
+							<x value="30"/>
+							<y value="30"/>
+							<z value="30"/>
+						</ThreeDimensionSpatialCoordinate>
+					</threeDimensionSpatialCoordinateCollection>
+				</MarkupEntity>
+				<MarkupEntity xsi:type="TextAnnotationEntity">
+					<uniqueIdentifier root="2.25.209062252700506713337852265812734566764"/>
+					<text value="Test Annotation Text"/>
+					<font value="TestFont"/>
+					<fontColor value="TestFontColor"/>
+					<fontEffect value="TestFontEffect"/>
+					<fontSize value="TestFontSize"/>
+					<fontStyle value="TestFontStyle"/>
+					<textJustify value="TestTextJustify"/>
+					<fontOpacity value="TestFontOpacity"/>
+					<geometricShapeEntity xsi:type="TwoDimensionMultiPoint">
+						<uniqueIdentifier root="2.25.209062252621278550823588209694167327084"/>
+						<questionTypeCode code="geoShapeQt1" codeSystemName="VKL">
+							<iso:displayName xmlns:iso="uri:iso.org:21090" value="GeoShape Question Type One"/>
+						</questionTypeCode>
+						<shapeIdentifier value="510"/>
+						<label value="abel "/>
+						<description value="escr "/>
+						<includeFlag value="true"/>
+						<comment value="omment "/>
+						<lineColor value="neColor"/>
+						<lineOpacity value="neOpacity"/>
+						<lineStyle value="neStyle"/>
+						<lineThickness value="neThickness"/>
+						<questionIndex value="110"/>
+						<interpolationMethod code="interMethod1" codeSystemName="VKL">
+							<iso:displayName xmlns:iso="uri:iso.org:21090" value="Interpolation Method One"/>
+						</interpolationMethod>
+						<imageReferenceUid root="1.2.333.6666666666666.9"/>
+						<referencedFrameNumber value="1"/>
+						<twoDimensionSpatialCoordinateCollection>
+							<TwoDimensionSpatialCoordinate>
+								<coordinateIndex value="0"/>
+								<x value="20"/>
+								<y value="40"/>
+							</TwoDimensionSpatialCoordinate>
+							<TwoDimensionSpatialCoordinate>
+								<coordinateIndex value="1"/>
+								<x value="30"/>
+								<y value="50"/>
+							</TwoDimensionSpatialCoordinate>
+						</twoDimensionSpatialCoordinateCollection>
+					</geometricShapeEntity>
+				</MarkupEntity>
+			</markupEntityCollection>
+			<imageAnnotationStatementCollection>
+				<ImageAnnotationStatement xsi:type="AnnotationEntityHasPerformedTaskContextEntityStatement">
+					<subjectUniqueIdentifier root="2.25.209056706332989902262895089118817345900"/>
+					<objectUniqueIdentifier root="1.2.3.4.5.6.2268009315.1952.1364854508.970"/>
+				</ImageAnnotationStatement>
+				<ImageAnnotationStatement xsi:type="AnnotationEntityHasPlannedTaskContextEntityStatement">
+					<subjectUniqueIdentifier root="2.25.209056706332989902262895089118817345900"/>
+					<objectUniqueIdentifier root="1.2.3.4.5.6.2268009315.1952.1364854508.970"/>
+				</ImageAnnotationStatement>
+				<ImageAnnotationStatement xsi:type="CalculationEntityReferencesCalculationEntityStatement">
+					<subjectUniqueIdentifier root="2.25.209059875697174960379193532507322900844"/>
+					<objectUniqueIdentifier root="2.25.209059875697174960379193532507322900844"/>
+				</ImageAnnotationStatement>
+				<ImageAnnotationStatement xsi:type="CalculationEntityUsesCalculationEntityStatement">
+					<subjectUniqueIdentifier root="2.25.209059875697174960379193532507322900844"/>
+					<objectUniqueIdentifier root="2.25.209059875697174960379193532507322900844"/>
+				</ImageAnnotationStatement>
+				<ImageAnnotationStatement xsi:type="ImagingObservationEntityHasCalculationEntityStatement">
+					<subjectUniqueIdentifier root="2.25.209059875697174960379193532507322900844"/>
+					<objectUniqueIdentifier root="2.25.209057498773071369934801388595268870508"/>
+				</ImageAnnotationStatement>
+				<ImageAnnotationStatement xsi:type="ImagingObservationEntityIsFoundInImagingPhysicalEntityStatement">
+					<subjectUniqueIdentifier root="2.25.209058290975468350063912986441228280172"/>
+					<objectUniqueIdentifier root="2.25.209057498773071369934801388595268870508"/>
+				</ImageAnnotationStatement>
+				<ImageAnnotationStatement xsi:type="ImagingPhysicalEntityHasCalculationEntityStatement">
+					<subjectUniqueIdentifier root="2.25.209059875697174960379193532507322900844"/>
+					<objectUniqueIdentifier root="2.25.209058290975468350063912986441228280172"/>
+				</ImageAnnotationStatement>
+				<ImageAnnotationStatement xsi:type="ImagingPhysicalEntityHasImagingObservationEntityStatement">
+					<subjectUniqueIdentifier root="2.25.209057498773071369934801388595268870508"/>
+					<objectUniqueIdentifier root="2.25.209058290975468350063912986441228280172"/>
+				</ImageAnnotationStatement>
+				<ImageAnnotationStatement xsi:type="DicomImageReferenceEntityHasCalculationEntityStatement">
+					<subjectUniqueIdentifier root="2.25.209059875697174960379193532507322900844"/>
+					<objectUniqueIdentifier root="2.25.209060667978800103022569467946826260844"/>
+				</ImageAnnotationStatement>
+				<ImageAnnotationStatement xsi:type="DicomImageReferenceEntityHasImagingObservationEntityStatement">
+					<subjectUniqueIdentifier root="2.25.209057498773071369934801388595268870508"/>
+					<objectUniqueIdentifier root="2.25.209060667978800103022569467946826260844"/>
+				</ImageAnnotationStatement>
+				<ImageAnnotationStatement xsi:type="DicomImageReferenceEntityHasImagingPhysicalEntityStatement">
+					<subjectUniqueIdentifier root="2.25.209058290975468350063912986441228280172"/>
+					<objectUniqueIdentifier root="2.25.209060667978800103022569467946826260844"/>
+				</ImageAnnotationStatement>
+				<ImageAnnotationStatement xsi:type="DicomSegmentationEntityHasImagingObservationEntityStatement">
+					<subjectUniqueIdentifier root="2.25.209057498773071369934801388595268870508"/>
+					<objectUniqueIdentifier root="2.25.209061460260425245665945403386329620844"/>
+				</ImageAnnotationStatement>
+				<ImageAnnotationStatement xsi:type="GeneralLesionObservationEntityHasImagingPhysicalEntityStatement">
+					<subjectUniqueIdentifier root="2.25.209058290975468350063912986441228280172"/>
+					<objectUniqueIdentifier root="2.25.209057498693843207420536488051771498860"/>
+				</ImageAnnotationStatement>
+				<ImageAnnotationStatement xsi:type="ImageAnnotationHasCalculationEntityStatement">
+					<subjectUniqueIdentifier root="2.25.209059875697174960379193532507322900844"/>
+					<objectUniqueIdentifier root="1.2.3.4.5.6.2268009315.1952.1364854508.970"/>
+				</ImageAnnotationStatement>
+				<ImageAnnotationStatement xsi:type="ImageAnnotationHasChildImageAnnotationStatement">
+					<subjectUniqueIdentifier root="1.2.3.4.5.6.2268009315.1952.1364854508.970"/>
+					<objectUniqueIdentifier root="1.2.3.4.5.6.2268009315.1952.1364854508.970"/>
+				</ImageAnnotationStatement>
+				<ImageAnnotationStatement xsi:type="ImageAnnotationHasDicomImageReferenceEntityStatement">
+					<subjectUniqueIdentifier root="2.25.209060667978800103022569467946826260844"/>
+					<objectUniqueIdentifier root="1.2.3.4.5.6.2268009315.1952.1364854508.970"/>
+				</ImageAnnotationStatement>
+				<ImageAnnotationStatement xsi:type="ImageAnnotationHasDicomSegmentationEntityStatement">
+					<subjectUniqueIdentifier root="2.25.209061460260425245665945403386329620844"/>
+					<objectUniqueIdentifier root="1.2.3.4.5.6.2268009315.1952.1364854508.970"/>
+				</ImageAnnotationStatement>
+				<ImageAnnotationStatement xsi:type="ImageAnnotationHasGeneralLesionObservationEntityStatement">
+					<subjectUniqueIdentifier root="2.25.209057498693843207420536488051771498860"/>
+					<objectUniqueIdentifier root="1.2.3.4.5.6.2268009315.1952.1364854508.970"/>
+				</ImageAnnotationStatement>
+				<ImageAnnotationStatement xsi:type="ImageAnnotationHasImagingObservationEntityStatement">
+					<subjectUniqueIdentifier root="2.25.209057498773071369934801388595268870508"/>
+					<objectUniqueIdentifier root="1.2.3.4.5.6.2268009315.1952.1364854508.970"/>
+				</ImageAnnotationStatement>
+				<ImageAnnotationStatement xsi:type="ImageAnnotationHasImagingPhysicalEntityStatement">
+					<subjectUniqueIdentifier root="2.25.209058290975468350063912986441228280172"/>
+					<objectUniqueIdentifier root="1.2.3.4.5.6.2268009315.1952.1364854508.970"/>
+				</ImageAnnotationStatement>
+				<ImageAnnotationStatement xsi:type="ImageAnnotationHasInferenceEntityStatement">
+					<subjectUniqueIdentifier root="2.25.209057498693843207420536206576794788204"/>
+					<objectUniqueIdentifier root="1.2.3.4.5.6.2268009315.1952.1364854508.970"/>
+				</ImageAnnotationStatement>
+				<ImageAnnotationStatement xsi:type="ImageAnnotationHasTextAnnotationEntityStatement">
+					<subjectUniqueIdentifier root="2.25.209062252700506713337852265812734566764"/>
+					<objectUniqueIdentifier root="1.2.3.4.5.6.2268009315.1952.1364854508.970"/>
+				</ImageAnnotationStatement>
+				<ImageAnnotationStatement xsi:type="ImageAnnotationHasThreeDimensionGeometricShapeEntityStatement">
+					<subjectUniqueIdentifier root="2.25.209061460260425245665946247811259752812"/>
+					<objectUniqueIdentifier root="1.2.3.4.5.6.2268009315.1952.1364854508.970"/>
+				</ImageAnnotationStatement>
+				<ImageAnnotationStatement xsi:type="ImageAnnotationHasTwoDimensionGeometricShapeEntityStatement">
+					<subjectUniqueIdentifier root="2.25.209061460339653408180209740979873571180"/>
+					<objectUniqueIdentifier root="1.2.3.4.5.6.2268009315.1952.1364854508.970"/>
+				</ImageAnnotationStatement>
+				<ImageAnnotationStatement xsi:type="ImageAnnotationHasTimePointLesionObservationEntityStatement">
+					<subjectUniqueIdentifier root="2.25.209057498693843207420536769526748209516"/>
+					<objectUniqueIdentifier root="1.2.3.4.5.6.2268009315.1952.1364854508.970"/>
+				</ImageAnnotationStatement>
+				<ImageAnnotationStatement xsi:type="ImageAnnotationHasUriImageReferenceEntityStatement">
+					<subjectUniqueIdentifier root="2.25.209060668058028265536833805540370211180"/>
+					<objectUniqueIdentifier root="1.2.3.4.5.6.2268009315.1952.1364854508.970"/>
+				</ImageAnnotationStatement>
+				<ImageAnnotationStatement xsi:type="ImagingObservationEntityIsIdentifiedByThreeDimensionGeometricShapeEntityStatement">
+					<subjectUniqueIdentifier root="2.25.209061460260425245665946810761213174124"/>
+					<objectUniqueIdentifier root="2.25.209057498773071369934801388595268870508"/>
+				</ImageAnnotationStatement>
+				<ImageAnnotationStatement xsi:type="ImagingObservationEntityIsIdentifiedByTwoDimensionGeometricShapeEntityStatement">
+					<subjectUniqueIdentifier root="2.25.209061460260425245665945684861306331500"/>
+					<objectUniqueIdentifier root="2.25.209057498773071369934801388595268870508"/>
+				</ImageAnnotationStatement>
+				<ImageAnnotationStatement xsi:type="ImagingObservationEntityIsIdentifiedByTextAnnotationEntityStatement">
+					<subjectUniqueIdentifier root="2.25.209062252700506713337852265812734566764"/>
+					<objectUniqueIdentifier root="2.25.209057498773071369934801388595268870508"/>
+				</ImageAnnotationStatement>
+				<ImageAnnotationStatement xsi:type="ImagingPhysicalEntityHasThreeDimensionGeometricShapeEntityStatement">
+					<subjectUniqueIdentifier root="2.25.209061460260425245665946810761213174124"/>
+					<objectUniqueIdentifier root="2.25.209058290975468350063912986441228280172"/>
+				</ImageAnnotationStatement>
+				<ImageAnnotationStatement xsi:type="ImagingPhysicalEntityHasTwoDimensionGeometricShapeEntityStatement">
+					<subjectUniqueIdentifier root="2.25.209061460260425245665945684861306331500"/>
+					<objectUniqueIdentifier root="2.25.209058290975468350063912986441228280172"/>
+				</ImageAnnotationStatement>
+				<ImageAnnotationStatement xsi:type="ImagingPhysicalEntityHasTextAnnotationEntityStatement">
+					<subjectUniqueIdentifier root="2.25.209062252700506713337852265812734566764"/>
+					<objectUniqueIdentifier root="2.25.209058290975468350063912986441228280172"/>
+				</ImageAnnotationStatement>
+				<ImageAnnotationStatement xsi:type="ThreeDimensionGeometricShapeEntityIsComprisedOfThreeDimensionGeometricShapeEntityStatement">
+					<subjectUniqueIdentifier root="2.25.209062252700506713337851421387804434796"/>
+					<objectUniqueIdentifier root="2.25.209062252700506713337851702862781145452"/>
+				</ImageAnnotationStatement>
+				<ImageAnnotationStatement xsi:type="ThreeDimensionGeometricShapeEntityExcludesThreeDimensionGeometricShapeEntityStatement">
+					<subjectUniqueIdentifier root="2.25.209061460260425245665946529286236463468"/>
+					<objectUniqueIdentifier root="2.25.209062252700506713337851421387804434796"/>
+				</ImageAnnotationStatement>
+				<ImageAnnotationStatement xsi:type="TimePointLesionObservationEntityHasImagingPhysicalEntityStatement">
+					<subjectUniqueIdentifier root="2.25.209058290975468350063912986441228280172"/>
+					<objectUniqueIdentifier root="2.25.209057498693843207420536769526748209516"/>
+				</ImageAnnotationStatement>
+				<ImageAnnotationStatement xsi:type="TwoDimensionGeometricShapeEntityIsComprisedOfTwoDimensionGeometricShapeEntityStatement">
+					<subjectUniqueIdentifier root="2.25.209061460260425245665945684861306331500"/>
+					<objectUniqueIdentifier root="2.25.209061460339653408180210303929826992492"/>
+				</ImageAnnotationStatement>
+				<ImageAnnotationStatement xsi:type="TwoDimensionGeometricShapeEntityExcludesTwoDimensionGeometricShapeEntityStatement">
+					<subjectUniqueIdentifier root="2.25.209061460260425245665945684861306331500"/>
+					<objectUniqueIdentifier root="2.25.209061460339653408180210022454850281836"/>
+				</ImageAnnotationStatement>
+				<ImageAnnotationStatement xsi:type="UriImageReferenceEntityHasImagingObservationEntityStatement">
+					<subjectUniqueIdentifier root="2.25.209057498773071369934801388595268870508"/>
+					<objectUniqueIdentifier root="2.25.209060668058028265536833805540370211180"/>
+				</ImageAnnotationStatement>
+				<ImageAnnotationStatement xsi:type="UriImageReferenceEntityHasImagingPhysicalEntityStatement">
+					<subjectUniqueIdentifier root="2.25.209058290975468350063912986441228280172"/>
+					<objectUniqueIdentifier root="2.25.209060668058028265536833805540370211180"/>
+				</ImageAnnotationStatement>
+				<ImageAnnotationStatement xsi:type="UriImageReferenceEntityHasCalculationEntityStatement">
+					<subjectUniqueIdentifier root="2.25.209059875697174960379193532507322900844"/>
+					<objectUniqueIdentifier root="2.25.209060668058028265536833805540370211180"/>
+				</ImageAnnotationStatement>
+			</imageAnnotationStatementCollection>
+			<imageReferenceEntityCollection>
+				<ImageReferenceEntity xsi:type="DicomImageReferenceEntity">
+					<uniqueIdentifier root="2.25.209060667978800103022569467946826260844"/>
+					<imageStudy>
+						<instanceUid root="1.2.4567887654"/>
+						<startDate value="20130401"/>
+						<startTime value="171508"/>
+						<procedureDescription value="Test Procedure"/>
+						<imageSeries>
+							<instanceUid root="1.2.98765543"/>
+							<modality code="OM" codeSystemName="VKL">
+								<iso:displayName xmlns:iso="uri:iso.org:21090" value="Other Modality"/>
+							</modality>
+							<imageCollection>
+								<Image>
+									<sopClassUid root="1.2.3.8888888"/>
+									<sopInstanceUid root="1.2.333.6666666666666.9"/>
+									<imagePlane>
+										<rowImageOrientationX value="1"/>
+										<rowImageOrientationY value="2"/>
+										<rowImageOrientationZ value="1"/>
+										<columnImageOrientationX value="4"/>
+										<columnImageOrientationY value="5"/>
+										<columnImageOrientationZ value="4"/>
+										<verticalPixelSpacing value="7"/>
+										<horizontalPixelSpacing value="8"/>
+										<sliceThickness value="9"/>
+										<imagePositionX value="10"/>
+										<imagePositionY value="11"/>
+										<imagePositionZ value="12"/>
+									</imagePlane>
+									<generalImage>
+										<patientOrientationColumn value="2.0"/>
+										<patientOrientationRow value="4.0"/>
+									</generalImage>
+								</Image>
+							</imageCollection>
+						</imageSeries>
+						<referencedDicomObjectCollection>
+							<ReferencedDicomObject>
+								<modality code="OM" codeSystemName="VKL">
+									<iso:displayName xmlns:iso="uri:iso.org:21090" value="Other Modality"/>
+								</modality>
+								<sopInstanceUid root="1.2.8348347643"/>
+							</ReferencedDicomObject>
+						</referencedDicomObjectCollection>
+					</imageStudy>
+				</ImageReferenceEntity>
+				<ImageReferenceEntity xsi:type="UriImageReferenceEntity">
+					<uniqueIdentifier root="2.25.209060668058028265536833805540370211180"/>
+					<uri value="test::uri-schema"/>
+					<mimeType value="image/png"/>
+				</ImageReferenceEntity>
+			</imageReferenceEntityCollection>
+		</ImageAnnotation>
+	</imageAnnotations>
+</ImageAnnotationCollection>

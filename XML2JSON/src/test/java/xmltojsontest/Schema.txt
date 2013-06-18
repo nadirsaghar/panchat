@@ -7,42 +7,12 @@
 	{
 		"annotationContainerUID" : 
 		{
-			"description":"patients//patient/@id",
+			"description":"/ImageAnnotationCollection/uniqueIdentifier/@root",
 			"type": "string"
 		},
 		"annotationDateTime" : 
 		{
-			 "description":"patients//patient/@id",
-			"type": "string"
-		},
-		"annotationType" : 
-		{
-			"description":"patients//patient/@id",
-			"type": "string"
-		},
-		"dob" : 
-		{
-			"description":"patients//patient/@id",
-			"type": "string"
-		},
-		"patientId" : 
-		{
-			"description":"patients//patient/@id",
-			"type": "string"
-		},
-		"patientName" :
-		{
-			"description":"patients//patient/@id",
-			"type": "string"
-		},
-		"sex" : 
-		{
-			"description":"patients//patient/@id",
-			"type": "string"
-		},
-		"user" :
-		{
-			"description":"patients//patient/@id",
+			"description":"/ImageAnnotationCollection/dateTime/@value",
 			"type": "string"
 		}
 	}
