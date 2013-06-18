@@ -22,8 +22,11 @@ public class AppTest
 			XmlToJson xmlToJson = new XmlToJson("/home/nakull/GSoC/panchat/XML2JSON/src/test/java/xmltojsontest/Test.xml");
 			String xml = new Scanner( new File("/home/nakull/GSoC/panchat/XML2JSON/src/test/java/xmltojsontest/Test.xml") ).useDelimiter("\\A").next();
 			
-			xmlToJson.convertXmlToJson(xml, mappings, null);
-			
+			String result = xmlToJson.convertXmlToJson(xml, mappings, null);
+			System.out.println(result);
+			PrintWriter out = new PrintWriter("/home/nakull/GSoC/panchat/XML2JSON/src/test/java/xmltojsontest/Success.txt");
+			out.println(result);
+			out.close();
 		} 
 		
 		catch (FileNotFoundException e) 

@@ -72,78 +72,80 @@ public class XmlToJson implements IXmlToJson
 			ISettings settings) 
 	{
 		// TODO Auto-generated method stub
-		
+		JsonObject generatedJson = new JsonObject();
 		JsonParser parser = new JsonParser();
 		JsonObject jsonObject = (JsonObject)parser.parse(mappings.getMappingsAsString());
 		Set<Entry<String,JsonElement>> entrySet = jsonObject.entrySet();
 		
-		for(Entry e : entrySet)
+		for(Entry<String,JsonElement> e : entrySet)
 		{
 			String key = (String)e.getKey();
-			Object jsonElement =e.getValue();
+			JsonElement jsonElement =e.getValue();
 			
+			// Should go inside for the "properties" key
 			if(jsonElement instanceof JsonObject)
 			{
-				JsonObject nestedJsonObject = (JsonObject) jsonElement;
-				Set<Entry<String,JsonElement>> entrySetNested = nestedJsonObject.entrySet();
+				JsonObject propertiesObject = (JsonObject) jsonElement;
 				
-				for(Entry eNested : entrySetNested)
+				//Get each nested JsonObject inside Properties in the Set
+				Set<Entry<String,JsonElement>> propertySet = propertiesObject.entrySet();
+				
+				//Iterate through each property
+				for(Entry<String,JsonElement> property : propertySet)
 				{
-					String keyNested = (String)eNested.getKey();
-					Object jsonElementNested =eNested.getValue();
+					String propertyName = property.getKey();
+					JsonElement propertyValue =property.getValue();
 					
-					if(jsonElementNested instanceof JsonObject)
+					// Should be JsonObject - else ignore
+					if(propertyValue instanceof JsonObject)
 					{
-						JsonObject nestedJsonObject2 = (JsonObject) jsonElementNested;
-						Set<Entry<String,JsonElement>> entrySetNested2 = nestedJsonObject2.entrySet();
-						for(Entry eNested2 : entrySetNested2)
-						{
-							String keyNested2 = (String)eNested2.getKey();
-							Object jsonElementNested2 =eNested2.getValue();
+						JsonObject propertyValueObject = (JsonObject) propertyValue;
+						Set<Entry<String,JsonElement>> propertyInternals = propertyValueObject.entrySet();
+						
+						// Get value and type for each property
+						String propertyType = null, xPath = null;	
+						
+						for(Entry<String,JsonElement> propertyInternal : propertyInternals)
+						{							
+							String propertyInternalKey = propertyInternal.getKey();
+							JsonElement propertyInternalValue = propertyInternal.getValue();
 							
-							if(keyNested2.equalsIgnoreCase(keyNested2))
-							{
-								//String xpath = (String)jsonElementNested2;
-								JsonPrimitive jsonPrimitive = (JsonPrimitive)jsonElementNested2;
-								String xpath= jsonPrimitive.getAsString();
-								
-								System.out.println(evaluateXPath(xpath));
+							if(propertyInternalKey.equalsIgnoreCase("description"))
+							{								
+								if(propertyInternalValue instanceof JsonPrimitive && ((JsonPrimitive) propertyInternalValue).isString())
+								{
+									JsonPrimitive jsonPrimitive = (JsonPrimitive)propertyInternalValue;
+									xPath = jsonPrimitive.getAsString();
+								}							
+									
 							}
+							else if(propertyInternalKey.equalsIgnoreCase("type"))
+							{
+								if(propertyInternalValue instanceof JsonPrimitive && ((JsonPrimitive) propertyInternalValue).isString())
+								{
+									JsonPrimitive jsonPrimitive = (JsonPrimitive)propertyInternalValue;
+									propertyType = jsonPrimitive.getAsString();
+								}
+							}
+							
 						}
+						
+						//TO DO : modify evaluateXPath to take in type
+						if(propertyType.equalsIgnoreCase("string"))
+						{
+							generatedJson.addProperty(propertyName, evaluateXPath(xPath));
+						}
+						else if (propertyType.equalsIgnoreCase("number"))
+						{
+							generatedJson.addProperty(propertyName, evaluateXPath(xPath));
+						}
+						
 				    }
 				}
 			}
 		}
-		
-		
-			
-		
-		
-		 /*
-		 JSONObject jsonObject = new JSONObject(mappings.getMappingsAsString());
 		 
-		 Iterator keys = jsonObject.keys();
-		 String key;
-		 while(keys.hasNext()) 
-		 {
-	         key = keys.next().toString();
-	         //element
-	         Object value = jsonObject.get(key);
-	         if(value instanceof JSONObject)
-	         	{
-	        	 JSONObject nestedValue = (JSONObject)value;
-	        	 Iterator nestedKeys = nestedValue.keys();
-	        	 while(nestedKeys.hasNext()) 
-	    		 {
-	    	         String nestedKey = nestedKeys.next().toString();
-	    	         String innerValue = nestedValue.getString(nestedKey);
-	    	         String hi = "ho";
-	    	         
-	    		 }
-	         	}
-	     }*/	 
-		 
-		 return null;
+		return generatedJson.toString();
 	}
 	
 	
