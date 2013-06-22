@@ -1,11 +1,12 @@
 /**
  * 
  */
-package org.panchat.xml2json.core;
+package org.panchat.xmltojson.core;
 
-import org.panchat.xml2json.interfaces.IMappings;
-import org.panchat.xml2json.interfaces.ISettings;
-import org.panchat.xml2json.interfaces.IXml2Json;
+import org.panchat.xmltojson.interfaces.IMappings;
+import org.panchat.xmltojson.interfaces.ISettings;
+import org.panchat.xmltojson.interfaces.IXmlToJson;
+
 import java.io.IOException;
 import java.util.Iterator;
 import java.util.Map.Entry;
@@ -22,10 +23,10 @@ import com.google.gson.*;
  * @author nakull
  *
  */
-public class Xml2Json implements IXml2Json {
+public class XmlToJson implements IXmlToJson {
 
 	
-	public Xml2Json(String xmlFilePath)
+	public XmlToJson(String xmlFilePath)
 	{
 		factory = DocumentBuilderFactory.newInstance();
 		try {

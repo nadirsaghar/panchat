@@ -1,7 +1,7 @@
 /**
  * 
  */
-package org.panchat.xml2json.interfaces;
+package org.panchat.xmltojson.interfaces;
 
 /**
  * @author nakull

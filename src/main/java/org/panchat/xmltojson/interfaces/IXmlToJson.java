@@ -1,13 +1,13 @@
 /**
  * 
  */
-package org.panchat.xml2json.interfaces;
+package org.panchat.xmltojson.interfaces;
 
 /**
  * @author nakull
  *
  */
-public interface IXml2Json {
+public interface IXmlToJson {
 	
 	public String convertXmlToJson(String xml,IMappings mappings, ISettings settings);
 	
