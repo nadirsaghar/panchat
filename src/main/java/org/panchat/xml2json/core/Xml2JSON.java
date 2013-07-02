@@ -1,11 +1,11 @@
 /**
  * 
  */
-package org.panchat.xmltojson.core;
+package org.panchat.xml2json.core;
 
-import org.panchat.xmltojson.interfaces.IMappings;
-import org.panchat.xmltojson.interfaces.ISettings;
-import org.panchat.xmltojson.interfaces.IXmlToJson;
+import org.panchat.xml2json.api.IMappings;
+import org.panchat.xml2json.api.ISettings;
+import org.panchat.xml2json.api.IXml2JSON;
 
 import java.io.IOException;
 import java.util.Iterator;
@@ -23,10 +23,10 @@ import com.google.gson.*;
  * @author nakull
  *
  */
-public class XmlToJson implements IXmlToJson {
+public class Xml2JSON implements IXml2JSON {
 
 	
-	public XmlToJson(String xmlFilePath)
+	public Xml2JSON(String xmlFilePath)
 	{
 		factory = DocumentBuilderFactory.newInstance();
 		try {
@@ -120,6 +120,11 @@ public class XmlToJson implements IXmlToJson {
 						{
 							generatedJson.addProperty(propertyName, evaluateXPath(xPath));
 						}
+						else if (propertyType.equalsIgnoreCase("array"))
+						{
+							JsonArray computedValue = computeArrayValue(propertyValueObject);
+							generatedJson.add(propertyName, computedValue);
+						}
 						
 				    }
 				}
@@ -128,8 +133,14 @@ public class XmlToJson implements IXmlToJson {
 		 
 		return generatedJson.toString();
 	}
+	
+	private JsonArray computeArrayValue(JsonObject schemaNode)
+	{
+		
+		return null;
+	}
 
-	public String evaluateXPath(String xPath)
+	private String evaluateXPath(String xPath)
     {
     	XPath xpath = xPathFactory.newXPath();
     	try {

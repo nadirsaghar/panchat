@@ -1,9 +1,9 @@
 /**
  * 
  */
-package org.panchat.xmltojson.core;
+package org.panchat.xml2json.core;
 
-import org.panchat.xmltojson.interfaces.IMappings;
+import org.panchat.xml2json.api.IMappings;
 
 /**
  * @author nakull

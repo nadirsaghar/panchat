@@ -1,18 +1,19 @@
 /**
  * 
  */
-package org.panchat.xmltojson.test;
+package org.panchat.xml2json.test;
 
 import java.io.*;
 import java.util.*;
-import org.panchat.xmltojson.core.*;
-import org.panchat.xmltojson.interfaces.*;
+
+import org.panchat.xml2json.api.*;
+import org.panchat.xml2json.core.*;
 
 /**
  * @author nakull
  *
  */
-public class XmlToJsonTest {
+public class Xml2JSONTest {
 	
 	public static void main(String[] args)
 	{
@@ -24,7 +25,7 @@ public class XmlToJsonTest {
 			String schema;
 			schema = new Scanner( new File("/home/nakull/GSoC/panchat/src/test/resources/Schema.txt") ).useDelimiter("\\A").next();
 			IMappings mappings = new Mappings(schema);
-			XmlToJson xmlToJson = new XmlToJson("/home/nakull/GSoC/panchat/src/test/resources/Test.xml");
+			Xml2JSON xmlToJson = new Xml2JSON("/home/nakull/GSoC/panchat/src/test/resources/Test.xml");
 			String xml = new Scanner( new File("/home/nakull/GSoC/panchat/src/test/resources/Test.xml") ).useDelimiter("\\A").next();
 			
 			String result = xmlToJson.convertXmlToJson(xml, mappings, null);

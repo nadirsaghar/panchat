@@ -1,7 +1,7 @@
 /**
  * 
  */
-package org.panchat.xmltojson.interfaces;
+package org.panchat.xml2json.api;
 
 /**
  * @author nakull
@@ -9,7 +9,7 @@ package org.panchat.xmltojson.interfaces;
  */
  
  /** Change interface to IXml2JSON **/
-public interface IXmlToJson {
+public interface IXml2JSON {
 	
 	public String convertXmlToJson(String xml,IMappings mappings, ISettings settings);
 	

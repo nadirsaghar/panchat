@@ -5,4 +5,4 @@
  * @author nakull
  *
  */
-package org.panchat.xmltojson.interfaces;
+package org.panchat.xml2json.test;

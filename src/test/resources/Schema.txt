@@ -40,5 +40,7 @@
 		      "description":"ImageAnnotationCollection/user/name/@value",
 		      "type": "string"
 		}
+		
+		
 	}
 }
