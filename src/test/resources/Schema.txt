@@ -39,8 +39,21 @@
 		{
 		      "description":"ImageAnnotationCollection/user/name/@value",
 		      "type": "string"
+		},
+		"annotations" :
+		{
+			  "description":"ImageAnnotationCollection/imageAnnotations/ImageAnnotation",
+		      "type": "array",
+		      "properties": 
+			  {
+				"annotationUID" : 
+				{
+					"description":"uniqueIdentifier/@root",
+		      		"type": "string",
+		      		"path": "relative"
+				}
+			  }				      		
 		}
-		
 		
 	}
 }

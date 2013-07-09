@@ -16,6 +16,8 @@ import javax.xml.parsers.*;
 import javax.xml.xpath.*;
 
 import org.w3c.dom.Document;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 import com.google.gson.*;
 
@@ -136,8 +138,102 @@ public class Xml2JSON implements IXml2JSON {
 	
 	private JsonArray computeArrayValue(JsonObject schemaNode)
 	{
+		//JsonObject propertiesObject = (JsonObject) jsonElement;
 		
-		return null;
+		//Get each nested JsonObject inside Properties in the Set
+		JsonArray generatedArray = new JsonArray();
+		Set<Entry<String,JsonElement>> propertySet = schemaNode.entrySet();
+		
+		String xPathParent = null;
+		JsonObject properties = null;
+		//Iterate through each property
+		for(Entry<String,JsonElement> property : propertySet)
+		{
+			String propertyName = property.getKey();
+			if(propertyName.equalsIgnoreCase("description"))
+			{
+				if(property.getValue() instanceof JsonPrimitive && ((JsonPrimitive) property.getValue()).isString())
+				{
+					JsonPrimitive jsonPrimitive = (JsonPrimitive)property.getValue();
+					xPathParent = jsonPrimitive.getAsString();
+					//break;
+				}	 
+			}
+			if(propertyName.equalsIgnoreCase("properties"))
+			{
+				properties = (JsonObject) property.getValue();				
+			}
+			
+		}
+		Set<Entry<String,JsonElement>> propertySetNested = properties.entrySet();
+		
+		
+		NodeList nodeList = evaluateXPathNodeSet(xPathParent);
+		
+		for (int i=0;i<nodeList.getLength();i++)
+		{
+			Node currentNode = nodeList.item(i);
+			JsonObject arrayElement = new JsonObject();
+			for(Entry<String,JsonElement> property : propertySetNested)
+			{
+				
+				String propertyName = property.getKey();
+				JsonElement propertyValue =property.getValue();
+						
+				// Should be JsonObject - else ignore
+				if(propertyValue instanceof JsonObject)
+				{
+					JsonObject propertyValueObject = (JsonObject) propertyValue;
+					Set<Entry<String,JsonElement>> propertyInternals = propertyValueObject.entrySet();
+						
+					// Get value and type for each property
+					String propertyType = null, xPath = null;	
+							
+					for(Entry<String,JsonElement> propertyInternal : propertyInternals)
+					{							
+						String propertyInternalKey = propertyInternal.getKey();
+						JsonElement propertyInternalValue = propertyInternal.getValue();
+								
+						if(propertyInternalKey.equalsIgnoreCase("description"))
+						{								
+							if(propertyInternalValue instanceof JsonPrimitive && ((JsonPrimitive) propertyInternalValue).isString())
+							{
+								JsonPrimitive jsonPrimitive = (JsonPrimitive)propertyInternalValue;
+								xPath = jsonPrimitive.getAsString();
+							}							
+										
+						}
+						else if(propertyInternalKey.equalsIgnoreCase("type"))
+						{
+							if(propertyInternalValue instanceof JsonPrimitive && ((JsonPrimitive) propertyInternalValue).isString())
+							{
+								JsonPrimitive jsonPrimitive = (JsonPrimitive)propertyInternalValue;
+								propertyType = jsonPrimitive.getAsString();
+							}
+						}
+								
+					}
+							
+							//TO DO : modify evaluateXPath to take in type
+					if(propertyType.equalsIgnoreCase("string"))
+					{
+						arrayElement.addProperty(propertyName, evaluateRelativeXPath(xPath,currentNode));
+					}
+					else if (propertyType.equalsIgnoreCase("number"))
+					{
+						arrayElement.addProperty(propertyName, evaluateRelativeXPath(xPath,currentNode));
+					}
+					else if (propertyType.equalsIgnoreCase("array"))
+					{
+						JsonArray computedValue = computeArrayValue(propertyValueObject);
+						arrayElement.add(propertyName, computedValue);
+					}
+							
+				}
+			}
+			generatedArray.add(arrayElement);
+		}			
+		return generatedArray;
 	}
 
 	private String evaluateXPath(String xPath)
@@ -154,6 +250,34 @@ public class Xml2JSON implements IXml2JSON {
     	
 		return null;    
     }
+	
+	private String evaluateRelativeXPath(String xPath,Node context)
+    {
+    	XPath xpath = xPathFactory.newXPath();
+    	try {
+			XPathExpression expr = xpath.compile(xPath);
+			String result = expr.evaluate(context);
+			return result;
+		} catch (XPathExpressionException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	
+		return null;    
+    }
+	
+	private NodeList evaluateXPathNodeSet(String xPath)
+	{
+		XPath xpath = xPathFactory.newXPath();
+    	try {
+			XPathExpression expr = xpath.compile(xPath);
+			return (NodeList) expr.evaluate(xmlDocument,XPathConstants.NODESET);			
+		} catch (XPathExpressionException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}    	
+		return null;  
+	}
 	/* (non-Javadoc)
 	 * @see org.panchat.xml2json.interfaces.IXml2Json#validateJson(java.lang.String, java.lang.String)
 	 */
