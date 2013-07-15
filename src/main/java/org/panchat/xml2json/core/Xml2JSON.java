@@ -146,6 +146,7 @@ public class Xml2JSON implements IXml2JSON {
 		
 		String xPathParent = null;
 		JsonObject properties = null;
+		Boolean primitiveArray = false;  
 		//Iterate through each property
 		for(Entry<String,JsonElement> property : propertySet)
 		{
@@ -159,12 +160,21 @@ public class Xml2JSON implements IXml2JSON {
 					//break;
 				}	 
 			}
-			if(propertyName.equalsIgnoreCase("properties"))
+			else if(propertyName.equalsIgnoreCase("properties"))
 			{
 				properties = (JsonObject) property.getValue();				
 			}
+			else if((propertyName.equalsIgnoreCase("isPrimitive")))
+			{
+				JsonPrimitive jsonPrimitive = (JsonPrimitive)property.getValue();
+				if(jsonPrimitive.getAsString().equalsIgnoreCase("true"))
+				{
+					primitiveArray = true;
+				}
+			}
 			
 		}
+		
 		Set<Entry<String,JsonElement>> propertySetNested = properties.entrySet();
 		
 		
