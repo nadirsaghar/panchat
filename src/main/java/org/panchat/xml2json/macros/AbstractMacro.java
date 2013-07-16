@@ -21,7 +21,7 @@ public abstract class AbstractMacro
 		this.Description = Description;
 	}
 	
-	public abstract void Execute(String[] args, InputSource context);
+	public abstract String Execute(String[] args, InputSource context);
 	
 }
 
