@@ -32,7 +32,7 @@ public abstract class Concat extends AbstractMacro
 	 * @see org.panchat.xml2json.macros.AbstractMacro#Execute(java.lang.String[])
 	 */
 	@Override
-	public String Execute(JsonArray args, InputSource context) 
+	public String Execute(JsonArray args, Object context) 
 	{
 		String result = "";
 		

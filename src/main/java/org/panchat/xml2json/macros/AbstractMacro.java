@@ -23,7 +23,7 @@ public abstract class AbstractMacro
 		this.Description = Description;
 	}
 	
-	public abstract String Execute(JsonArray args, InputSource context);
+	public abstract String Execute(JsonArray args, Object context);
 	
 }
 

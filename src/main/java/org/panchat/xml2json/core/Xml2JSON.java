@@ -6,6 +6,7 @@ package org.panchat.xml2json.core;
 import org.panchat.xml2json.api.IMappings;
 import org.panchat.xml2json.api.ISettings;
 import org.panchat.xml2json.api.IXml2JSON;
+import org.panchat.xml2json.macros.AbstractMacro;
 
 import java.io.IOException;
 import java.util.Iterator;
@@ -18,6 +19,7 @@ import javax.xml.xpath.*;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import com.google.gson.*;
 
@@ -119,7 +121,7 @@ public class Xml2JSON implements IXml2JSON {
 							JsonObject macroValue = propertyValueObject.getAsJsonObject("macro");
 							
 							generatedJson.addProperty(propertyName, 
-									executeMacro(macroValue.getAsJsonPrimitive("name").getAsString(),macroValue.getAsJsonArray("arguments"))
+									executeMacro(macroValue.getAsJsonPrimitive("name").getAsString(),macroValue.getAsJsonArray("arguments"),xmlDocument)
 									);
 						}
 						
@@ -146,8 +148,31 @@ public class Xml2JSON implements IXml2JSON {
 		return generatedJson.toString();
 	}
 	
-	private String executeMacro(String name, JsonArray args)
+	private String executeMacro(String name, JsonArray args, Object context)
 	{
+		try {
+			
+			Class<?> macroClass = Class.forName(name);
+			try 
+			{
+				AbstractMacro macroInstance = (AbstractMacro)macroClass.newInstance();
+				//if(context != null)
+					//return macroInstance.Execute(args, context);
+				return macroInstance.Execute(args, context);
+			} 
+			catch (InstantiationException e) 
+			{				
+				e.printStackTrace();
+			} 
+			catch (IllegalAccessException e) 
+			{				
+				e.printStackTrace();
+			}
+			
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		return null;
 	}
