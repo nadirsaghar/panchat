@@ -55,6 +55,4 @@ public abstract class Concat extends AbstractMacro
 	
 	private XPathFactory xPathFactory;
 	
-	
-
 }

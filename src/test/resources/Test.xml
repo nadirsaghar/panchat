@@ -21,7 +21,10 @@
 		<birthDate value="19500101"/>
 		<sex value="O"/>
 		<ethnicGroup value="Other"/>
-	</person>
+		<address>
+			<houseNumber>Surya Hospital</houseNumber>
+			<streetAddress>Kanpur Road</streetAddress>
+			<zip>226012</zip></address></person>
 	<imageAnnotations>
 		<ImageAnnotation>
 		    <uniqueIdentifier root="111.222"/>			

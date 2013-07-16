@@ -30,6 +30,19 @@
 		      "description":"ImageAnnotationCollection/person/name/@value",
 		      "type": "string"
 		},
+		"address" :
+		{
+			  "macro" :
+			  {
+			     "name":"ImageAnnotationCollection/person/name/@value",
+		      	 "arguments" : 
+		      	 [
+		      	 	"ImageAnnotationCollection/person/address/houseNumber/text()",
+		      	 	"ImageAnnotationCollection/person/address/streetAddress/text()",
+		      	 	"ImageAnnotationCollection/person/address/zip/text()"
+		      	 ]
+			  } 	
+		},
 		"sex" : 
 		{
 		      "description":"ImageAnnotationCollection/person/sex/@value",
