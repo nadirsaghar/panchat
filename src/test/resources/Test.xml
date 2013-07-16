@@ -40,4 +40,6 @@
 			<templateUid root="1.2.3.2268009315.1952.1364854508.971"/>			
 		</ImageAnnotation>
 	</imageAnnotations>
-</ImageAnnotationCollection>
+	<primitiveArray>
+		<arrayElement Id="one"></arrayElement>
+		<arrayElement Id="two"></arrayElement></primitiveArray></ImageAnnotationCollection>

@@ -54,6 +54,12 @@
 				}
 			  }				      		
 		}
+		"primitiveArray" :
+		{
+			 "description":"ImageAnnotationCollection/primitiveArray/arrayElement/@Id",
+		     "type": "array",
+		     "isPrimitive" : "true"
+		}
 		
 	}
 }
