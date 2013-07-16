@@ -148,6 +148,7 @@ public class Xml2JSON implements IXml2JSON {
 	
 	private String executeMacro(String name, JsonArray args)
 	{
+		
 		return null;
 	}
 	

@@ -32,15 +32,16 @@ public abstract class Concat extends AbstractMacro
 	 * @see org.panchat.xml2json.macros.AbstractMacro#Execute(java.lang.String[])
 	 */
 	@Override
-	public String Execute(String[] args, InputSource context) 
+	public String Execute(JsonArray args, InputSource context) 
 	{
 		String result = "";
 		
 		XPath xpath = xPathFactory.newXPath();
     	try 
-    	{   for(String arg : args)
+    	{   for(int i =0; i<args.size();i++)
     		{
-	    		XPathExpression expr = xpath.compile(arg);
+    			JsonElement value = args.get(i);    			
+	    		XPathExpression expr = xpath.compile(value.getAsString());
 				result += expr.evaluate(context);
     		}
 									

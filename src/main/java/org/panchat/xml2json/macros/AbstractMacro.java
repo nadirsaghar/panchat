@@ -5,6 +5,8 @@ package org.panchat.xml2json.macros;
 
 import org.xml.sax.*;
 
+import com.google.gson.*;
+
 /**
  * @author nakull
  *
@@ -21,7 +23,7 @@ public abstract class AbstractMacro
 		this.Description = Description;
 	}
 	
-	public abstract String Execute(String[] args, InputSource context);
+	public abstract String Execute(JsonArray args, InputSource context);
 	
 }
 
