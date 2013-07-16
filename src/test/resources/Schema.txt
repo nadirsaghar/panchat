@@ -53,7 +53,7 @@
 		      		"path": "relative"
 				}
 			  }				      		
-		}
+		},
 		"primitiveArray" :
 		{
 			 "description":"ImageAnnotationCollection/primitiveArray/arrayElement/@Id",

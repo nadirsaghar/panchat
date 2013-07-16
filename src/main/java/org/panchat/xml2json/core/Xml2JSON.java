@@ -175,6 +175,18 @@ public class Xml2JSON implements IXml2JSON {
 			
 		}
 		
+		if(primitiveArray)
+		{
+			NodeList nodeList = evaluateXPathNodeSet(xPathParent);
+			for(int i=0;i<nodeList.getLength();i++)
+			{
+				Node currentNode = nodeList.item(i);
+				JsonPrimitive arrayElement = new JsonPrimitive(currentNode.getNodeValue());
+				generatedArray.add(arrayElement);
+			}
+			return generatedArray;
+		}
+		
 		Set<Entry<String,JsonElement>> propertySetNested = properties.entrySet();
 		
 		
