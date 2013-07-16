@@ -1,0 +1,5 @@
+<Macros>
+	<Macro Name="Concat">
+		<Description>Concats results of multiple XPath Expressions</Description>
+		<Arguments>
+			<Argument>Array of XML Paths ( Strings )</Argument></Arguments></Macro></Macros>
