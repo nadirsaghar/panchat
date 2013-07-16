@@ -34,7 +34,7 @@
 		{
 			  "macro" :
 			  {
-			     "name":"ImageAnnotationCollection/person/name/@value",
+			     "name":"org.panchat.xml2json.macros.Concat",
 		      	 "arguments" : 
 		      	 [
 		      	 	"ImageAnnotationCollection/person/address/houseNumber/text()",

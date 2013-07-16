@@ -113,8 +113,18 @@ public class Xml2JSON implements IXml2JSON {
 							
 						}
 						
+						
+						if(propertyValueObject.has("macro"))
+						{
+							JsonObject macroValue = propertyValueObject.getAsJsonObject("macro");
+							
+							generatedJson.addProperty(propertyName, 
+									executeMacro(macroValue.getAsJsonPrimitive("name").getAsString(),macroValue.getAsJsonArray("arguments"))
+									);
+						}
+						
 						//TO DO : modify evaluateXPath to take in type
-						if(propertyType.equalsIgnoreCase("string"))
+						else if(propertyType.equalsIgnoreCase("string"))
 						{
 							generatedJson.addProperty(propertyName, evaluateXPath(xPath));
 						}
@@ -134,6 +144,11 @@ public class Xml2JSON implements IXml2JSON {
 		}
 		 
 		return generatedJson.toString();
+	}
+	
+	private String executeMacro(String name, JsonArray args)
+	{
+		return null;
 	}
 	
 	private JsonArray computeArrayValue(JsonObject schemaNode)
