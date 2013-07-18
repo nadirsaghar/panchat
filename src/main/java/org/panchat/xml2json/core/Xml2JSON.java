@@ -6,7 +6,11 @@ package org.panchat.xml2json.core;
 import org.panchat.xml2json.api.IMappings;
 import org.panchat.xml2json.api.ISettings;
 import org.panchat.xml2json.api.IXml2JSON;
+import org.panchat.xml2json.conf.Configuration;
+import org.panchat.xml2json.exception.MacroExeception;
+import org.panchat.xml2json.exception.MacroNotFoundException;
 import org.panchat.xml2json.macros.AbstractMacro;
+import org.panchat.xml2json.macros.IMacro;
 
 import java.io.IOException;
 import java.util.Iterator;
@@ -29,6 +33,7 @@ import com.google.gson.*;
  */
 public class Xml2JSON implements IXml2JSON {
 
+	private Configuration configuration;
 	
 	public Xml2JSON(String xmlFilePath)
 	{
@@ -120,9 +125,14 @@ public class Xml2JSON implements IXml2JSON {
 						{
 							JsonObject macroValue = propertyValueObject.getAsJsonObject("macro");
 							
-							generatedJson.addProperty(propertyName, 
+							try {
+							generatedJson.add(propertyName, 
 									executeMacro(macroValue.getAsJsonPrimitive("name").getAsString(),macroValue.getAsJsonArray("arguments"),xmlDocument)
 									);
+							}catch(Exception ee)
+							{
+								ee.printStackTrace();
+							}
 						}
 						
 						//TO DO : modify evaluateXPath to take in type
@@ -148,33 +158,11 @@ public class Xml2JSON implements IXml2JSON {
 		return generatedJson.toString();
 	}
 	
-	private String executeMacro(String name, JsonArray args, Object context)
+	private JsonElement executeMacro(String name, JsonArray args, Document context) throws MacroNotFoundException, MacroExeception
 	{
-		try {
-			
-			Class<?> macroClass = Class.forName(name);
-			try 
-			{
-				AbstractMacro macroInstance = (AbstractMacro)macroClass.newInstance();
-				//if(context != null)
-					//return macroInstance.Execute(args, context);
-				return macroInstance.Execute(args, context);
-			} 
-			catch (InstantiationException e) 
-			{				
-				e.printStackTrace();
-			} 
-			catch (IllegalAccessException e) 
-			{				
-				e.printStackTrace();
-			}
-			
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		return null;
+		IMacro macro = configuration.lookupMacroByName(name);
+		if(macro!=null) throw new MacroNotFoundException(name);
+		return macro.execute(args , context);
 	}
 	
 	private JsonArray computeArrayValue(JsonObject schemaNode)
