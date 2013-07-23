@@ -32,7 +32,7 @@ public class ConcatMacro implements IMacro {
 	public JsonElement execute(JsonArray macroArguments , Document context) throws MacroExeception {
 		/** Implement concatenation here **/
 		
-		String result = null;
+		String result = "";
 		XPathFactory xPathFactory;
 		xPathFactory = XPathFactory.newInstance();
 		XPath xpath = xPathFactory.newXPath();
@@ -52,7 +52,7 @@ public class ConcatMacro implements IMacro {
 		return new JsonPrimitive(result);  
 
 		
-		return null;
+		//return null;
 	}
 
 }

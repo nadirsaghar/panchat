@@ -9,7 +9,9 @@ import org.panchat.xml2json.api.IXml2JSON;
 import org.panchat.xml2json.conf.Configuration;
 import org.panchat.xml2json.exception.MacroExeception;
 import org.panchat.xml2json.exception.MacroNotFoundException;
+import org.panchat.xml2json.exception.MacroRegistrationException;
 import org.panchat.xml2json.macros.AbstractMacro;
+import org.panchat.xml2json.macros.ConcatMacro;
 import org.panchat.xml2json.macros.IMacro;
 
 import java.io.IOException;
@@ -53,7 +55,16 @@ public class Xml2JSON implements IXml2JSON {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		xPathFactory = XPathFactory.newInstance();		
+		xPathFactory = XPathFactory.newInstance();	
+		configuration = new Configuration();
+		try 
+		{
+			configuration.registerMacro(new ConcatMacro());
+		} 
+		catch (MacroRegistrationException e) 
+		{			
+			e.printStackTrace();
+		}
 		
 	}
 	
@@ -100,7 +111,7 @@ public class Xml2JSON implements IXml2JSON {
 							String propertyInternalKey = propertyInternal.getKey();
 							JsonElement propertyInternalValue = propertyInternal.getValue();
 							
-							if(propertyInternalKey.equalsIgnoreCase("description"))
+							if(propertyInternalKey.equalsIgnoreCase("xpath"))
 							{								
 								if(propertyInternalValue instanceof JsonPrimitive && ((JsonPrimitive) propertyInternalValue).isString())
 								{
@@ -180,7 +191,7 @@ public class Xml2JSON implements IXml2JSON {
 		for(Entry<String,JsonElement> property : propertySet)
 		{
 			String propertyName = property.getKey();
-			if(propertyName.equalsIgnoreCase("description"))
+			if(propertyName.equalsIgnoreCase("xpath"))
 			{
 				if(property.getValue() instanceof JsonPrimitive && ((JsonPrimitive) property.getValue()).isString())
 				{
@@ -245,7 +256,7 @@ public class Xml2JSON implements IXml2JSON {
 						String propertyInternalKey = propertyInternal.getKey();
 						JsonElement propertyInternalValue = propertyInternal.getValue();
 								
-						if(propertyInternalKey.equalsIgnoreCase("description"))
+						if(propertyInternalKey.equalsIgnoreCase("xpath"))
 						{								
 							if(propertyInternalValue instanceof JsonPrimitive && ((JsonPrimitive) propertyInternalValue).isString())
 							{

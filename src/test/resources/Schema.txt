@@ -7,34 +7,34 @@
 	{
 		"annotationContainerUID" : 
 		{
-			"description":"/ImageAnnotationCollection/uniqueIdentifier/@root",
+			"xpath":"/ImageAnnotationCollection/uniqueIdentifier/@root",
 			"type": "string"
 		},
 		"annotationDateTime" : 
 		{
-			"description":"/ImageAnnotationCollection/dateTime/@value",
+			"xpath":"/ImageAnnotationCollection/dateTime/@value",
 			"type": "string"
 		},		
 		"dob" : 
 		{
-		      "description":"ImageAnnotationCollection/person/birthDate/@value",
+		      "xpath":"ImageAnnotationCollection/person/birthDate/@value",
 		      "type": "string"
 		},
 		"patientId" : 
 		{
-		      "description":"ImageAnnotationCollection/person/id/@value",
+		      "xpath":"ImageAnnotationCollection/person/id/@value",
 		      "type": "string"
 		},
 		"patientName" :
 		{ 
-		      "description":"ImageAnnotationCollection/person/name/@value",
+		      "xpath":"ImageAnnotationCollection/person/name/@value",
 		      "type": "string"
 		},
 		"address" :
 		{
 			  "macro" :
 			  {
-			     "name":"org.panchat.xml2json.macros.Concat",
+			     "name":"concat",
 		      	 "arguments" : 
 		      	 [
 		      	 	"ImageAnnotationCollection/person/address/houseNumber/text()",
@@ -45,23 +45,23 @@
 		},
 		"sex" : 
 		{
-		      "description":"ImageAnnotationCollection/person/sex/@value",
+		      "xpath":"ImageAnnotationCollection/person/sex/@value",
 		      "type": "string"
 		},
 		"user" :
 		{
-		      "description":"ImageAnnotationCollection/user/name/@value",
+		      "xpath":"ImageAnnotationCollection/user/name/@value",
 		      "type": "string"
 		},
 		"annotations" :
 		{
-			  "description":"ImageAnnotationCollection/imageAnnotations/ImageAnnotation",
+			  "xpath":"ImageAnnotationCollection/imageAnnotations/ImageAnnotation",
 		      "type": "array",
 		      "properties": 
 			  {
 				"annotationUID" : 
 				{
-					"description":"uniqueIdentifier/@root",
+					"xpath":"uniqueIdentifier/@root",
 		      		"type": "string",
 		      		"path": "relative"
 				}
@@ -69,7 +69,7 @@
 		},
 		"primitiveArray" :
 		{
-			 "description":"ImageAnnotationCollection/primitiveArray/arrayElement/@Id",
+			 "xpath":"ImageAnnotationCollection/primitiveArray/arrayElement/@Id",
 		     "type": "array",
 		     "isPrimitive" : "true"
 		}
