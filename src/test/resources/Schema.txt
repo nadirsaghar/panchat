@@ -72,7 +72,20 @@
 			 "xpath":"ImageAnnotationCollection/primitiveArray/arrayElement/@Id",
 		     "type": "array",
 		     "isPrimitive" : "true"
+		},
+		"checkingToStringMacro" :
+		{
+			  "macro" :
+			  {
+			     "name":"toString",
+		      	 "arguments" : 
+		      	 [
+		      	 	"Testing ",
+		      	 	"Successful"
+		      	 ]
+			  } 	
 		}
+		
 		
 	}
 }

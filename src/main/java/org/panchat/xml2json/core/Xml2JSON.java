@@ -3,16 +3,12 @@
  */
 package org.panchat.xml2json.core;
 
-import org.panchat.xml2json.api.IMappings;
-import org.panchat.xml2json.api.ISettings;
-import org.panchat.xml2json.api.IXml2JSON;
+import org.panchat.xml2json.api.*;
 import org.panchat.xml2json.conf.Configuration;
 import org.panchat.xml2json.exception.MacroExeception;
 import org.panchat.xml2json.exception.MacroNotFoundException;
 import org.panchat.xml2json.exception.MacroRegistrationException;
-import org.panchat.xml2json.macros.AbstractMacro;
-import org.panchat.xml2json.macros.ConcatMacro;
-import org.panchat.xml2json.macros.IMacro;
+import org.panchat.xml2json.macros.*;
 
 import java.io.IOException;
 import java.util.Iterator;
@@ -60,6 +56,7 @@ public class Xml2JSON implements IXml2JSON {
 		try 
 		{
 			configuration.registerMacro(new ConcatMacro());
+			configuration.registerMacro(new ToStringMacro());
 		} 
 		catch (MacroRegistrationException e) 
 		{			
