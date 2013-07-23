@@ -161,7 +161,7 @@ public class Xml2JSON implements IXml2JSON {
 	private JsonElement executeMacro(String name, JsonArray args, Document context) throws MacroNotFoundException, MacroExeception
 	{
 		IMacro macro = configuration.lookupMacroByName(name);
-		if(macro!=null) throw new MacroNotFoundException(name);
+		if(macro == null) throw new MacroNotFoundException(name);
 		return macro.execute(args , context);
 	}
 	
