@@ -37,9 +37,11 @@
 			     "name":"concat",
 		      	 "arguments" : 
 		      	 [
-		      	 	"ImageAnnotationCollection/person/address/houseNumber/text()",
-		      	 	"ImageAnnotationCollection/person/address/streetAddress/text()",
-		      	 	"ImageAnnotationCollection/person/address/zip/text()"
+		      	 	{ "xpath" : "ImageAnnotationCollection/person/address/houseNumber/text()" },
+		      	 	{ "string" : ", " },
+		      	 	{ "xpath" : "ImageAnnotationCollection/person/address/streetAddress/text()"},
+		      	 	{ "string" : ", " },
+		      	 	{ "xpath" : "ImageAnnotationCollection/person/address/zip/text()" }
 		      	 ]
 			  } 	
 		},
