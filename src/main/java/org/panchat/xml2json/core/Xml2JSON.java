@@ -52,17 +52,7 @@ public class Xml2JSON implements IXml2JSON {
 			e.printStackTrace();
 		}
 		xPathFactory = XPathFactory.newInstance();	
-		configuration = new Configuration();
-		try 
-		{
-			configuration.registerMacro(new ConcatMacro());
-			configuration.registerMacro(new ToStringMacro());
-		} 
-		catch (MacroRegistrationException e) 
-		{			
-			e.printStackTrace();
-		}
-		
+		configuration = new Configuration();		
 	}
 	
 	/* (non-Javadoc)
