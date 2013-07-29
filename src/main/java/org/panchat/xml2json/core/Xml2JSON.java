@@ -29,144 +29,117 @@ import com.google.gson.*;
  * @author nakull
  *
  */
-public class Xml2JSON implements IXml2JSON {
-
+public class Xml2JSON implements IXml2JSON 
+{
 	private Configuration configuration;
 	
-	public Xml2JSON(String xmlFilePath)
+	public Xml2JSON(String xmlFilePath) throws ParserConfigurationException, SAXException, IOException
 	{
-		factory = DocumentBuilderFactory.newInstance();
-		try {
-			builder = factory.newDocumentBuilder();
-		} catch (ParserConfigurationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
-			xmlDocument = builder.parse(xmlFilePath);
-		} catch (SAXException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		xPathFactory = XPathFactory.newInstance();	
+		factory = DocumentBuilderFactory.newInstance();		
+		
+		builder = factory.newDocumentBuilder();
+		
+		xmlDocument = builder.parse(xmlFilePath);
+		
+		xPathFactory = XPathFactory.newInstance();
+		
 		configuration = new Configuration();		
 	}
 	
 	/* (non-Javadoc)
 	 * @see org.panchat.xml2json.interfaces.IXml2Json#convertXmlToJson(java.lang.String, org.panchat.xml2json.interfaces.IMappings, org.panchat.xml2json.interfaces.ISettings)
 	 */
-	public String convertXmlToJson(String xml, IMappings mappings,
-			ISettings settings) {
+	public String convertXmlToJson(String xml, IMappings mappings,ISettings settings) 
+	{
 		JsonObject generatedJson = new JsonObject();
 		JsonParser parser = new JsonParser();
-		JsonObject jsonObject = (JsonObject)parser.parse(mappings.getMappingsAsString());
-		Set<Entry<String,JsonElement>> entrySet = jsonObject.entrySet();
+		JsonObject mappingsObject = (JsonObject)parser.parse(mappings.getMappingsAsString());
 		
-		for(Entry<String,JsonElement> e : entrySet)
+		if(!mappingsObject.has("properties"))
+			return null;
+		
+		JsonObject propertiesObject = mappingsObject.getAsJsonObject("properties");
+						
+		//Get each nested JsonObject inside Properties in the Set
+		Set<Entry<String,JsonElement>> propertySet = propertiesObject.entrySet();
+				
+		//Iterate through each property
+		for(Entry<String,JsonElement> property : propertySet)
 		{
-			String key = (String)e.getKey();
-			JsonElement jsonElement =e.getValue();
-			
-			// Should go inside for the "properties" key
-			if(jsonElement instanceof JsonObject)
+			String propertyName = property.getKey();
+			JsonElement propertyValue =property.getValue();
+				
+			// Should be JsonObject - else ignore
+			if(!(propertyValue instanceof JsonObject))
 			{
-				JsonObject propertiesObject = (JsonObject) jsonElement;
-				
-				//Get each nested JsonObject inside Properties in the Set
-				Set<Entry<String,JsonElement>> propertySet = propertiesObject.entrySet();
-				
-				//Iterate through each property
-				for(Entry<String,JsonElement> property : propertySet)
+				continue;
+			}
+			
+			JsonObject propertyValueObject = (JsonObject) propertyValue;
+						
+			// Get value and type for each property
+			String propertyType = null, xPath = null;
+			
+			if(propertyValueObject.has("xpath"))
+			{
+				JsonPrimitive xpathPrimitive = propertyValueObject.getAsJsonPrimitive("xpath");
+				if(xpathPrimitive.isString())
+					xPath = xpathPrimitive.getAsString();
+			}
+			
+			if(propertyValueObject.has("type"))
+			{
+				JsonPrimitive typePrimitive = propertyValueObject.getAsJsonPrimitive("type");
+				if(typePrimitive.isString())
+					propertyType = typePrimitive.getAsString();
+			}			
+						
+			if(propertyValueObject.has("macro"))
+			{
+				JsonObject macroValue = propertyValueObject.getAsJsonObject("macro");
+							
+				try 
 				{
-					String propertyName = property.getKey();
-					JsonElement propertyValue =property.getValue();
-					
-					// Should be JsonObject - else ignore
-					if(propertyValue instanceof JsonObject)
-					{
-						JsonObject propertyValueObject = (JsonObject) propertyValue;
-						Set<Entry<String,JsonElement>> propertyInternals = propertyValueObject.entrySet();
-						
-						// Get value and type for each property
-						String propertyType = null, xPath = null;	
-						
-						for(Entry<String,JsonElement> propertyInternal : propertyInternals)
-						{							
-							String propertyInternalKey = propertyInternal.getKey();
-							JsonElement propertyInternalValue = propertyInternal.getValue();
-							
-							if(propertyInternalKey.equalsIgnoreCase("xpath"))
-							{								
-								if(propertyInternalValue instanceof JsonPrimitive && ((JsonPrimitive) propertyInternalValue).isString())
-								{
-									JsonPrimitive jsonPrimitive = (JsonPrimitive)propertyInternalValue;
-									xPath = jsonPrimitive.getAsString();
-								}							
-									
-							}
-							else if(propertyInternalKey.equalsIgnoreCase("type"))
-							{
-								if(propertyInternalValue instanceof JsonPrimitive && ((JsonPrimitive) propertyInternalValue).isString())
-								{
-									JsonPrimitive jsonPrimitive = (JsonPrimitive)propertyInternalValue;
-									propertyType = jsonPrimitive.getAsString();
-								}
-							}
-							
-						}
-						
-						
-						if(propertyValueObject.has("macro"))
-						{
-							JsonObject macroValue = propertyValueObject.getAsJsonObject("macro");
-							
-							try {
-							generatedJson.add(propertyName, 
-									executeMacro(macroValue.getAsJsonPrimitive("name").getAsString(),macroValue.getAsJsonArray("arguments"),xmlDocument)
-									);
-							}catch(Exception ee)
-							{
-								ee.printStackTrace();
-							}
-						}
-						
-						//TO DO : modify evaluateXPath to take in type
-						else if(propertyType.equalsIgnoreCase("string"))
-						{
-							generatedJson.addProperty(propertyName, evaluateXPath(xPath));
-						}
-						else if (propertyType.equalsIgnoreCase("number"))
-						{
-							generatedJson.addProperty(propertyName, evaluateXPath(xPath));
-						}
-						else if (propertyType.equalsIgnoreCase("array"))
-						{
-							JsonArray computedValue = computeArrayValue(propertyValueObject);
-							generatedJson.add(propertyName, computedValue);
-						}
-						
-				    }
+					generatedJson.add(propertyName, 
+					executeMacro(macroValue.getAsJsonPrimitive("name").getAsString(),macroValue.getAsJsonArray("arguments"),xmlDocument)
+								);
+				}
+				catch(Exception ee)
+				{
+					ee.printStackTrace();
 				}
 			}
+			
+			//TO DO : modify evaluateXPath to take in type
+			else if(propertyType.equalsIgnoreCase("string"))
+			{
+				generatedJson.addProperty(propertyName, evaluateXPath(xPath));
+			}
+			else if (propertyType.equalsIgnoreCase("number"))
+			{
+				generatedJson.addProperty(propertyName, evaluateXPath(xPath));
+			}
+			else if (propertyType.equalsIgnoreCase("array"))
+			{
+				JsonArray computedValue = computeArrayValue(propertyValueObject);
+					generatedJson.add(propertyName, computedValue);
+			}						
 		}
-		 
 		return generatedJson.toString();
 	}
 	
 	private JsonElement executeMacro(String name, JsonArray args, Document context) throws MacroNotFoundException, MacroExeception
 	{
 		IMacro macro = configuration.lookupMacroByName(name);
-		if(macro == null) throw new MacroNotFoundException(name);
+		
+		if(macro == null) 
+			throw new MacroNotFoundException(name);
+		
 		return macro.execute(args , context);
 	}
 	
 	private JsonArray computeArrayValue(JsonObject schemaNode)
-	{
-		//JsonObject propertiesObject = (JsonObject) jsonElement;
-		
+	{		
 		//Get each nested JsonObject inside Properties in the Set
 		JsonArray generatedArray = new JsonArray();
 		Set<Entry<String,JsonElement>> propertySet = schemaNode.entrySet();
@@ -175,6 +148,8 @@ public class Xml2JSON implements IXml2JSON {
 		JsonObject properties = null;
 		Boolean primitiveArray = false;  
 		//Iterate through each property
+		
+		
 		for(Entry<String,JsonElement> property : propertySet)
 		{
 			String propertyName = property.getKey();
@@ -327,9 +302,7 @@ public class Xml2JSON implements IXml2JSON {
 		}    	
 		return null;  
 	}
-	/* (non-Javadoc)
-	 * @see org.panchat.xml2json.interfaces.IXml2Json#validateJson(java.lang.String, java.lang.String)
-	 */
+	
 	public Boolean validateJson(String jsonSchema, String generatedJson) {
 		// TODO Auto-generated method stub
 		return null;

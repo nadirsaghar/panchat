@@ -18,7 +18,7 @@ public class ConcatMacro implements IMacro {
 
 	public String getDescription() {
 
-		return "macro to concatenate string values";
+		return "Macro to concatenate string values - both xpath evaluated values and hard coded strings. ";
 	}
 
 	public String getAuthor() {
@@ -56,10 +56,7 @@ public class ConcatMacro implements IMacro {
 		{			
 			e.printStackTrace();
 		}    	
-		return new JsonPrimitive(result);  
-
-		
-		//return null;
+		return new JsonPrimitive(result);
 	}
 
 }

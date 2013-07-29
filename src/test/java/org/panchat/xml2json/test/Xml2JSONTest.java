@@ -35,7 +35,7 @@ public class Xml2JSONTest {
 			//out.close();
 		} 
 		
-		catch (FileNotFoundException e) 
+		catch (Exception e) 
 		{			
 			e.printStackTrace();
 		}
