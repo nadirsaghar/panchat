@@ -5,6 +5,12 @@
 	"required": false,
 	"properties": 
 	{
+		"author" : 
+		{
+			"xpath":"/author",
+			"default" : "Nakull",
+			"type": "string"
+		},
 		"annotationContainerUID" : 
 		{
 			"xpath":"/ImageAnnotationCollection/uniqueIdentifier/@root",

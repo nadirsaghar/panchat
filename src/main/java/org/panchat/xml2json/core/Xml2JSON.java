@@ -78,7 +78,8 @@ public class Xml2JSON implements IXml2JSON
 			JsonObject propertyValueObject = (JsonObject) propertyValue;
 						
 			// Get value and type for each property
-			String propertyType = null, xPath = null;
+			String propertyType = null, xPath = null, defaultValue = null;
+			Boolean xpathFailed = true;
 			
 			if(propertyValueObject.has("xpath"))
 			{
@@ -92,7 +93,14 @@ public class Xml2JSON implements IXml2JSON
 				JsonPrimitive typePrimitive = propertyValueObject.getAsJsonPrimitive("type");
 				if(typePrimitive.isString())
 					propertyType = typePrimitive.getAsString();
-			}			
+			}
+			
+			if(propertyValueObject.has("default"))
+			{
+				JsonPrimitive defaultPrimitive = propertyValueObject.getAsJsonPrimitive("default");
+				if(defaultPrimitive.isString())
+					defaultValue = defaultPrimitive.getAsString();
+			}
 						
 			if(propertyValueObject.has("macro"))
 			{
@@ -113,11 +121,19 @@ public class Xml2JSON implements IXml2JSON
 			//TO DO : modify evaluateXPath to take in type
 			else if(propertyType.equalsIgnoreCase("string"))
 			{
-				generatedJson.addProperty(propertyName, evaluateXPath(xPath));
+				String value = evaluateXPath(xPath);
+				if(value.isEmpty() && !defaultValue.isEmpty())
+					generatedJson.addProperty(propertyName, defaultValue);
+				else
+					generatedJson.addProperty(propertyName, value);
 			}
 			else if (propertyType.equalsIgnoreCase("number"))
 			{
-				generatedJson.addProperty(propertyName, evaluateXPath(xPath));
+				String value = evaluateXPath(xPath);
+				if(value.isEmpty() && !defaultValue.isEmpty())
+					generatedJson.addProperty(propertyName, defaultValue);
+				else
+				    generatedJson.addProperty(propertyName, value);
 			}
 			else if (propertyType.equalsIgnoreCase("array"))
 			{
