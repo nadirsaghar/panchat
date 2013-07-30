@@ -71,7 +71,7 @@ public class Configuration {
 	
 	public static interface IClassLoaderCallback 
 	{
-		public Class<? extends IMacro> getClassByName(String classname);
+		public Class<? extends IMacro> getClassByName(String classname) throws ClassNotFoundException;
 	}
 	
 	
