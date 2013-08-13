@@ -5,15 +5,16 @@ package org.panchat.xml2json.core;
 
 import org.panchat.xml2json.api.*;
 import org.panchat.xml2json.conf.Configuration;
+import org.panchat.xml2json.conf.MyLogger;
 import org.panchat.xml2json.exception.MacroExeception;
 import org.panchat.xml2json.exception.MacroNotFoundException;
 import org.panchat.xml2json.exception.MacroRegistrationException;
 import org.panchat.xml2json.macros.*;
 
 import java.io.IOException;
-import java.util.Iterator;
+import java.util.*;
 import java.util.Map.Entry;
-import java.util.Set;
+import java.util.logging.Logger;
 
 import javax.xml.parsers.*;
 import javax.xml.xpath.*;
@@ -33,6 +34,8 @@ public class Xml2JSON implements IXml2JSON
 {
 	private Configuration configuration;
 	
+	private final static Logger LOGGER = MyLogger.getLogger();
+	
 	public Xml2JSON(String xmlFilePath) throws ParserConfigurationException, SAXException, IOException
 	{
 		factory = DocumentBuilderFactory.newInstance();		
@@ -51,13 +54,16 @@ public class Xml2JSON implements IXml2JSON
 	 */
 	public String convertXmlToJson(String xml, IMappings mappings,ISettings settings) 
 	{
+		LOGGER.info("Starting Conversion");
 		JsonObject generatedJson = new JsonObject();
 		JsonParser parser = new JsonParser();
 		JsonObject mappingsObject = (JsonObject)parser.parse(mappings.getMappingsAsString());
 		
 		if(!mappingsObject.has("properties"))
+		{
+			LOGGER.severe("The Schema file is Empty!!");
 			return null;
-		
+		}
 		JsonObject propertiesObject = mappingsObject.getAsJsonObject("properties");
 						
 		//Get each nested JsonObject inside Properties in the Set
@@ -108,6 +114,7 @@ public class Xml2JSON implements IXml2JSON
 							
 				try 
 				{
+					LOGGER.info("Using macro " + macroValue.getAsJsonPrimitive("name").getAsString());
 					generatedJson.add(propertyName, 
 					executeMacro(macroValue.getAsJsonPrimitive("name").getAsString(),macroValue.getAsJsonArray("arguments"),xmlDocument)
 								);
@@ -123,22 +130,35 @@ public class Xml2JSON implements IXml2JSON
 			{
 				String value = evaluateXPath(xPath);
 				if(value.isEmpty() && !defaultValue.isEmpty())
+				{
 					generatedJson.addProperty(propertyName, defaultValue);
+					LOGGER.info(propertyName + " 's xpath expression evaluates to null so using default value");
+				}
 				else
+				{
+					LOGGER.info(propertyName + " has a primitive value - adding");
 					generatedJson.addProperty(propertyName, value);
+				}
 			}
 			else if (propertyType.equalsIgnoreCase("number"))
 			{
 				String value = evaluateXPath(xPath);
 				if(value.isEmpty() && !defaultValue.isEmpty())
+				{
 					generatedJson.addProperty(propertyName, defaultValue);
+					LOGGER.info(propertyName + " 's xpath expression evaluates to null so using default value");
+				}
 				else
+				{
+					LOGGER.info(propertyName + " has a primitive value - adding");					
 				    generatedJson.addProperty(propertyName, value);
+				}
 			}
 			else if (propertyType.equalsIgnoreCase("array"))
 			{
+				LOGGER.info(propertyName + " has an array value : computing");				
 				JsonArray computedValue = computeArrayValue(propertyValueObject);
-					generatedJson.add(propertyName, computedValue);
+				generatedJson.add(propertyName, computedValue);
 			}						
 		}
 		return generatedJson.toString();
