@@ -23,8 +23,18 @@
 		},		
 		"dob" : 
 		{
-		      "xpath":"ImageAnnotationCollection/person/birthDate/@value",
-		      "type": "string"
+		      "macro" :
+			  {
+			     "name":"toDate",
+		      	 "arguments" : 
+		      	 [
+		      	 	{ 
+		      	 		"xpath":"ImageAnnotationCollection/person/birthDate/@value",
+		      	 		"sourceFormat":"yyyyMMdd",
+		      	 		"desiredFormat":"EEE, MMM d, ''yy" 
+		      	 	}		      	 	
+		      	 ]
+			  }
 		},
 		"patientId" : 
 		{
@@ -80,20 +90,6 @@
 			 "xpath":"ImageAnnotationCollection/primitiveArray/arrayElement/@Id",
 		     "type": "array",
 		     "isPrimitive" : "true"
-		},
-		"checkingToStringMacro" :
-		{
-			  "macro" :
-			  {
-			     "name":"toString",
-		      	 "arguments" : 
-		      	 [
-		      	 	"Testing ",
-		      	 	"Successful"
-		      	 ]
-			  } 	
-		}
-		
-		
+		}		
 	}
 }

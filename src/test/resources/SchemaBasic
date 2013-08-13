@@ -1,0 +1,40 @@
+{
+	"type": "object" ,
+	"$schema": "http://jsonschema.org/draft03/schema",
+	"id": "http://jsonschema.net",
+	"required": false,
+	"properties": 
+	{
+		"author" : 
+		{
+			"xpath":"/author",
+			"default" : "Nakull",
+			"type": "string"
+		},
+		"annotationContainerUID" : 
+		{
+			"xpath":"/ImageAnnotationCollection/uniqueIdentifier/@root",
+			"type": "string"
+		},
+		"annotationDateTime" : 
+		{
+			"xpath":"/ImageAnnotationCollection/dateTime/@value",
+			"type": "string"
+		},		
+		"dob" : 
+		{
+		      "xpath":"ImageAnnotationCollection/person/birthDate/@value",
+		      "type": "string"
+		},
+		"patientId" : 
+		{
+		      "xpath":"ImageAnnotationCollection/person/id/@value",
+		      "type": "string"
+		},
+		"patientName" :
+		{ 
+		      "xpath":"ImageAnnotationCollection/person/name/@value",
+		      "type": "string"
+		}		
+	}
+}

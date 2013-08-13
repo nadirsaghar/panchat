@@ -23,10 +23,10 @@ public class Xml2JSONTest {
 		try 
 		{
 			String schema;
-			schema = new Scanner( new File("/home/nakull/GSoC/panchat/src/test/resources/Schema.txt") ).useDelimiter("\\A").next();
+			schema = new Scanner( new File("src/test/resources/Schema.txt") ).useDelimiter("\\A").next();
 			IMappings mappings = new Mappings(schema);
-			Xml2JSON xmlToJson = new Xml2JSON("/home/nakull/GSoC/panchat/src/test/resources/Test.xml");
-			String xml = new Scanner( new File("/home/nakull/GSoC/panchat/src/test/resources/Test.xml") ).useDelimiter("\\A").next();
+			Xml2JSON xmlToJson = new Xml2JSON("src/test/resources/Test.xml");
+			String xml = new Scanner( new File("src/test/resources/Test.xml") ).useDelimiter("\\A").next();
 			
 			String result = xmlToJson.convertXmlToJson(xml, mappings, null);
 			System.out.println(result);

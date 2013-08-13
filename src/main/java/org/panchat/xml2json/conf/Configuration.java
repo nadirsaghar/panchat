@@ -4,9 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.panchat.xml2json.exception.MacroRegistrationException;
-import org.panchat.xml2json.macros.ConcatMacro;
-import org.panchat.xml2json.macros.IMacro;
-import org.panchat.xml2json.macros.ToStringMacro;
+import org.panchat.xml2json.macros.*;
 
 public class Configuration {
 
@@ -19,7 +17,7 @@ public class Configuration {
 		try 
 		{
 			registerMacro(ConcatMacro.class);
-			registerMacro(ToStringMacro.class);
+			registerMacro(ToDateMacro.class);
 		} 
 		catch (MacroRegistrationException e) 
 		{			
