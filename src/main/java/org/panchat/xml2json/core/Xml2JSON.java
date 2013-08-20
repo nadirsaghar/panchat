@@ -129,7 +129,7 @@ public class Xml2JSON implements IXml2JSON
 			else if(propertyType.equalsIgnoreCase("string"))
 			{
 				String value = evaluateXPath(xPath);
-				if(value.isEmpty() && !defaultValue.isEmpty())
+				if(value.isEmpty() && !defaultValue.isEmpty()) // TODO : NPE thrown here because both defaultValue not specified
 				{
 					generatedJson.addProperty(propertyName, defaultValue);
 					LOGGER.info(propertyName + " 's xpath expression evaluates to null so using default value");
