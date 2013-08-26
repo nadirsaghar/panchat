@@ -89,101 +89,8 @@ public class Xml2JSON implements IXml2JSON
 		for(Entry<String,JsonElement> property : propertySet)
 		{
 			String propertyName = property.getKey();
-			JsonElement propertyValue =property.getValue();
-			
-			computedObject.add(propertyName, computeJsonElement(propertyValue, propertyName, context));
-			/*// Should be JsonObject - else ignore
-			if(!(propertyValue instanceof JsonObject))
-			{
-				continue;
-			}
-			
-			JsonObject propertyValueObject = (JsonObject) propertyValue;
-						
-			// Get value and type for each property
-			String propertyType = null, xPath = null, defaultValue = null;
-			Boolean xpathFailed = true;
-			
-			if(propertyValueObject.has("xpath"))
-			{
-				JsonPrimitive xpathPrimitive = propertyValueObject.getAsJsonPrimitive("xpath");
-				if(xpathPrimitive.isString())
-					xPath = xpathPrimitive.getAsString();
-			}
-			
-			if(propertyValueObject.has("type"))
-			{
-				JsonPrimitive typePrimitive = propertyValueObject.getAsJsonPrimitive("type");
-				if(typePrimitive.isString())
-					propertyType = typePrimitive.getAsString();
-			}
-			
-			if(propertyValueObject.has("default"))
-			{
-				JsonPrimitive defaultPrimitive = propertyValueObject.getAsJsonPrimitive("default");
-				if(defaultPrimitive.isString())
-					defaultValue = defaultPrimitive.getAsString();
-			}
-						
-			if(propertyValueObject.has("macro"))
-			{
-				JsonObject macroValue = propertyValueObject.getAsJsonObject("macro");
-							
-				try 
-				{
-					LOGGER.info("Using macro " + macroValue.getAsJsonPrimitive("name").getAsString());
-					computedObject.add(propertyName, 
-					executeMacro(macroValue.getAsJsonPrimitive("name").getAsString(),macroValue.getAsJsonArray("arguments"),xmlDocument)
-								);
-					continue;
-				}
-				catch(Exception ee)
-				{
-					ee.printStackTrace();
-				}
-			}
-			
-			//TO DO : modify evaluateXPath to take in type
-			else if(propertyType.equalsIgnoreCase("string"))
-			{
-				String value = evaluateXPath(xPath, context);
-				if(value.isEmpty() && !defaultValue.isEmpty())
-				{
-					computedObject.addProperty(propertyName, defaultValue);
-					LOGGER.info(propertyName + " 's xpath expression evaluates to null so using default value");
-				}
-				else
-				{
-					LOGGER.info(propertyName + " has a primitive value - adding");
-					computedObject.addProperty(propertyName, value);
-				}
-			}
-			else if (propertyType.equalsIgnoreCase("number"))
-			{
-				String value = evaluateXPath(xPath,context);
-				if(value.isEmpty() && !defaultValue.isEmpty())
-				{
-					computedObject.addProperty(propertyName, defaultValue);
-					LOGGER.info(propertyName + " 's xpath expression evaluates to null so using default value");
-				}
-				else
-				{
-					LOGGER.info(propertyName + " has a primitive value - adding");					
-					computedObject.addProperty(propertyName, value);
-				}
-			}
-			else if (propertyType.equalsIgnoreCase("array"))
-			{
-				LOGGER.info(propertyName + " has an array value : computing");				
-				JsonArray computedValue = computeArrayValue(propertyValueObject, context);
-				computedObject.add(propertyName, computedValue);
-			}
-			else if (propertyType.equalsIgnoreCase("object"))
-			{
-				LOGGER.info(propertyName + " has an array value : computing");				
-				JsonObject computedValue = computeObjectValue(propertyValueObject, context);
-				computedObject.add(propertyName, computedValue);
-			}*/
+			JsonElement propertyValue =property.getValue();			
+			computedObject.add(propertyName, computeJsonElement(propertyValue, propertyName, context));			
 		}
 		return computedObject;
 	}
@@ -350,71 +257,11 @@ public class Xml2JSON implements IXml2JSON
 				String propertyName = property.getKey();
 				JsonElement propertyValue =property.getValue();
 				arrayElement.add(propertyName, computeJsonElement(propertyValue, propertyName, currentNode));
-				
-				/*		
-				// Should be JsonObject - else ignore
-				if(propertyValue instanceof JsonObject)
-				{
-					JsonObject propertyValueObject = (JsonObject) propertyValue;
-					Set<Entry<String,JsonElement>> propertyInternals = propertyValueObject.entrySet();
-						
-					// Get value and type for each property
-					String propertyType = null, xPath = null;
-					
-					
-							
-					for(Entry<String,JsonElement> propertyInternal : propertyInternals)
-					{							
-						String propertyInternalKey = propertyInternal.getKey();
-						JsonElement propertyInternalValue = propertyInternal.getValue();
-								
-						if(propertyInternalKey.equalsIgnoreCase("xpath"))
-						{								
-							if(propertyInternalValue instanceof JsonPrimitive && ((JsonPrimitive) propertyInternalValue).isString())
-							{
-								JsonPrimitive jsonPrimitive = (JsonPrimitive)propertyInternalValue;
-								xPath = jsonPrimitive.getAsString();
-							}							
-										
-						}
-						else if(propertyInternalKey.equalsIgnoreCase("type"))
-						{
-							if(propertyInternalValue instanceof JsonPrimitive && ((JsonPrimitive) propertyInternalValue).isString())
-							{
-								JsonPrimitive jsonPrimitive = (JsonPrimitive)propertyInternalValue;
-								propertyType = jsonPrimitive.getAsString();
-							}
-						}
-								
-					}
-							
-							//TO DO : modify evaluateXPath to take in type
-					if(propertyType.equalsIgnoreCase("string"))
-					{
-						arrayElement.addProperty(propertyName, evaluateXPath(xPath,currentNode));
-					}
-					else if (propertyType.equalsIgnoreCase("number"))
-					{
-						arrayElement.addProperty(propertyName, evaluateXPath(xPath,xmlDocument));
-					}
-					else if (propertyType.equalsIgnoreCase("array"))
-					{
-						JsonArray computedValue = computeArrayValue(propertyValueObject,context);
-						arrayElement.add(propertyName, computedValue);
-					}
-					else if (propertyType.equalsIgnoreCase("object"))
-					{
-						JsonObject computedValue = computeObjectValue(propertyValueObject,context);
-						arrayElement.add(propertyName, computedValue);						
-					}
-							
-				}*/
 			}
 			generatedArray.add(arrayElement);
 		}			
 		return generatedArray;
 	}
-
 
 	private String evaluateXPath(String xPath,Node context)
     {
@@ -431,7 +278,6 @@ public class Xml2JSON implements IXml2JSON
 		return null;    
     }
 	
-
 	private NodeList evaluateXPathNodeSet(String xPath)
 	{
 		XPath xpath = xPathFactory.newXPath();
