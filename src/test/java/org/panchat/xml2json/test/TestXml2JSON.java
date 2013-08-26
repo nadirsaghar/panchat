@@ -26,7 +26,7 @@ public class TestXml2JSON {
 		Xml2JSON xmlToJson = new Xml2JSON("src/test/resources/Test.xml");
 		String xml = new Scanner( new File("src/test/resources/Test.xml") ).useDelimiter("\\A").next();
 		
-		String result = xmlToJson.convertXmlToJson(xml, mappings, null);
+		String result = xmlToJson.convertXmlToJson(mappings, null);
 		System.out.println(result);
 		//assert();
 				
@@ -41,7 +41,7 @@ public class TestXml2JSON {
 		Xml2JSON xmlToJson = new Xml2JSON("src/test/resources/Test.xml");
 		String xml = new Scanner( new File("src/test/resources/Test.xml") ).useDelimiter("\\A").next();
 		
-		String result = xmlToJson.convertXmlToJson(xml, mappings, null);
+		String result = xmlToJson.convertXmlToJson(mappings, null);
 		System.out.println(result);
 		//assert();
 				

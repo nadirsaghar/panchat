@@ -28,7 +28,7 @@ public class Xml2JSONTest {
 			Xml2JSON xmlToJson = new Xml2JSON("src/test/resources/Test.xml");
 			String xml = new Scanner( new File("src/test/resources/Test.xml") ).useDelimiter("\\A").next();
 			
-			String result = xmlToJson.convertXmlToJson(xml, mappings, null);
+			String result = xmlToJson.convertXmlToJson(mappings, null);
 			System.out.println(result);
 			//PrintWriter out = new PrintWriter("home/nakull/GSoC/panchat/src/test/resources/Success2.txt");
 			//out.println(result);
