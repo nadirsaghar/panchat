@@ -1,0 +1,44 @@
+{
+	"type": "object" ,
+	"$schema": "http://jsonschema.org/draft03/schema",
+	"id": "http://jsonschema.net",
+	"required": false,
+	"properties": 
+	{
+		"site" : 
+		{
+			"xpath":"gbm:tcga_bcr/admin:admin/admin:bcr",
+			"type": "string"
+		},
+		"tissue_site" : 
+		{
+			"xpath":"gbm:tcga_bcr/gbm:patient/shared:tumor_tissue_site",
+			"type": "string"
+		},
+		"gender" : 
+		{
+			"xpath":"gbm:tcga_bcr/gbm:patient/shared:gender",
+			"type": "string"
+		},		
+		"patient_id" : 
+		{
+		      "xpath":"gbm:tcga_bcr/gbm:patient/shared:bcr_patient_barcode",
+		      "type": "string"
+		},
+		"icd_10" : 
+		{
+		      "xpath":"gbm:tcga_bcr/gbm:patient/shared:icd_10",
+		      "type": "string"
+		},
+		"ethnicity" :
+		{ 
+		      "xpath":"gbm:tcga_bcr/gbm:patient/shared:ethnicity",
+		      "type": "string"
+		},
+		"karnofsky_performance_score" :
+		{ 
+		      "xpath":"gbm:tcga_bcr/gbm:patient/shared:karnofsky_performance_score",
+		      "type": "string"
+		}				
+	}
+}

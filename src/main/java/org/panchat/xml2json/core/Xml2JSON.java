@@ -63,8 +63,9 @@ public class Xml2JSON implements IXml2JSON
 			LOGGER.severe("The Schema file is Empty - has no properties!!");
 			return null;
 		}
-		
+	
 		return computeObjectValue(mappingsObject.getAsJsonObject("properties"), xmlDocument).toString();
+
 	}
 	
 	private JsonElement executeMacro(String name, JsonArray args, Document context) throws MacroNotFoundException, MacroExeception
