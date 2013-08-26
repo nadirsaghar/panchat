@@ -4,25 +4,16 @@
 package org.panchat.xml2json.core;
 
 import org.panchat.xml2json.api.*;
-import org.panchat.xml2json.conf.Configuration;
-import org.panchat.xml2json.conf.MyLogger;
-import org.panchat.xml2json.exception.MacroExeception;
-import org.panchat.xml2json.exception.MacroNotFoundException;
-import org.panchat.xml2json.exception.MacroRegistrationException;
+import org.panchat.xml2json.conf.*;
+import org.panchat.xml2json.exception.*;
 import org.panchat.xml2json.macros.*;
-
-import java.io.IOException;
+import java.io.*;
 import java.util.*;
 import java.util.Map.Entry;
 import java.util.logging.Logger;
-
 import javax.xml.parsers.*;
 import javax.xml.xpath.*;
-
-import org.w3c.dom.Document;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
-//import org.xml.sax.Node;
+import org.w3c.dom.*;
 import org.xml.sax.SAXException;
 import com.google.gson.*;
 
@@ -108,7 +99,6 @@ public class Xml2JSON implements IXml2JSON
 					
 		// Get value and type for each property
 		String propertyType = null, xPath = null, defaultValue = null;
-		Boolean xpathFailed = true;
 		
 		if(propertyValueObject.has("xpath"))
 		{
@@ -188,7 +178,7 @@ public class Xml2JSON implements IXml2JSON
 			JsonObject computedValue = computeObjectValue(propertyValueObject, context);
 			return computedValue;
 		}
-
+        LOGGER.info(propertyName + "'s value cannot be evaluated !!");
 		return null;
 	}
 	
@@ -267,12 +257,14 @@ public class Xml2JSON implements IXml2JSON
 	private String evaluateXPath(String xPath,Node context)
     {
     	XPath xpath = xPathFactory.newXPath();
-    	try {
+    	try 
+    	{
 			XPathExpression expr = xpath.compile(xPath);
 			String result = expr.evaluate(context);
 			return result;
-		} catch (XPathExpressionException e) {
-			// TODO Auto-generated catch block
+		} catch (XPathExpressionException e) 
+		{			
+			LOGGER.info(xPath + " could not be evaluated !!");
 			e.printStackTrace();
 		}
     	
@@ -282,11 +274,13 @@ public class Xml2JSON implements IXml2JSON
 	private NodeList evaluateXPathNodeSet(String xPath)
 	{
 		XPath xpath = xPathFactory.newXPath();
-    	try {
+    	try 
+    	{
 			XPathExpression expr = xpath.compile(xPath);
 			return (NodeList) expr.evaluate(xmlDocument,XPathConstants.NODESET);			
-		} catch (XPathExpressionException e) {
-			// TODO Auto-generated catch block
+		} catch (XPathExpressionException e) 
+		{
+			LOGGER.info(xPath + " could not be evaluated !!");
 			e.printStackTrace();
 		}    	
 		return null;  
