@@ -98,7 +98,7 @@ public class Xml2JSON implements IXml2JSON
 		JsonObject propertyValueObject = (JsonObject) propertyValue;
 					
 		// Get value and type for each property
-		String propertyType = null, xPath = null, defaultValue = null;
+		String propertyType = null, xPath = null, defaultValue = "";
 		
 		if(propertyValueObject.has("xpath"))
 		{
