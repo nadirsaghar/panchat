@@ -45,4 +45,6 @@
 	</imageAnnotations>
 	<primitiveArray>
 		<arrayElement Id="one"></arrayElement>
-		<arrayElement Id="two"></arrayElement></primitiveArray></ImageAnnotationCollection>
+		<arrayElement Id="two"></arrayElement>
+	</primitiveArray>
+</ImageAnnotationCollection>

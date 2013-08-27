@@ -29,15 +29,24 @@ public class Xml2JSON implements IXml2JSON
 	
 	public Xml2JSON(String xmlFilePath) throws ParserConfigurationException, SAXException, IOException
 	{
+		//factory.setNamespaceAware(false);
+		
 		factory = DocumentBuilderFactory.newInstance();		
+		
+		//factory.setNamespaceAware(true);
+		//factory.setNamespaceAware(false);
 		
 		builder = factory.newDocumentBuilder();
 		
 		xmlDocument = builder.parse(xmlFilePath);
 		
-		xPathFactory = XPathFactory.newInstance();
+		//xPathFactory = XPathFactory.newInstance();
 		
-		configuration = new Configuration();		
+		configuration = new Configuration();
+		
+		xPath = XPathFactory.newInstance().newXPath();
+	    
+		xPath.setNamespaceContext(new UniversalNamespaceCache(xmlDocument,false));
 	}
 	
 	/* (non-Javadoc)
@@ -98,7 +107,7 @@ public class Xml2JSON implements IXml2JSON
 		JsonObject propertyValueObject = (JsonObject) propertyValue;
 					
 		// Get value and type for each property
-		String propertyType = null, xPath = null, defaultValue = "";
+		String propertyType = "", xPath = "", defaultValue = "";
 		
 		if(propertyValueObject.has("xpath"))
 		{
@@ -147,7 +156,7 @@ public class Xml2JSON implements IXml2JSON
 				LOGGER.info(propertyName + " 's xpath expression evaluates to null so using default value");
 				return new JsonPrimitive(defaultValue);
 			}
-			else
+			else if(value != null)
 			{
 				LOGGER.info(propertyName + " has a primitive value - adding");
 				return new JsonPrimitive(value);
@@ -161,7 +170,7 @@ public class Xml2JSON implements IXml2JSON
 				LOGGER.info(propertyName + " 's xpath expression evaluates to null so using default value");
 				return new JsonPrimitive(defaultValue);
 			}
-			else
+			else if(value != null)
 			{
 				return new JsonPrimitive(value);
 			}
@@ -191,8 +200,7 @@ public class Xml2JSON implements IXml2JSON
 		String xPathParent = null;
 		JsonObject properties = null;
 		Boolean primitiveArray = false;  
-		//Iterate through each property
-		
+		//Iterate through each property		
 		
 		for(Entry<String,JsonElement> property : propertySet)
 		{
@@ -254,15 +262,14 @@ public class Xml2JSON implements IXml2JSON
 		return generatedArray;
 	}
 
-	private String evaluateXPath(String xPath,Node context)
-    {
-    	XPath xpath = xPathFactory.newXPath();
+	private String evaluateXPath(String xPathExpression,Node context)
+    {    	
     	try 
-    	{
-			XPathExpression expr = xpath.compile(xPath);
-			String result = expr.evaluate(context);
+    	{			
+			String result = xPath.evaluate(xPathExpression, context);
 			return result;
-		} catch (XPathExpressionException e) 
+		} 
+    	catch (XPathExpressionException e) 
 		{			
 			LOGGER.info(xPath + " could not be evaluated !!");
 			e.printStackTrace();
@@ -271,14 +278,13 @@ public class Xml2JSON implements IXml2JSON
 		return null;    
     }
 	
-	private NodeList evaluateXPathNodeSet(String xPath)
-	{
-		XPath xpath = xPathFactory.newXPath();
+	private NodeList evaluateXPathNodeSet(String xPathExpression)
+	{		
     	try 
-    	{
-			XPathExpression expr = xpath.compile(xPath);
-			return (NodeList) expr.evaluate(xmlDocument,XPathConstants.NODESET);			
-		} catch (XPathExpressionException e) 
+    	{			
+			return (NodeList) xPath.evaluate(xPathExpression, xmlDocument, XPathConstants.NODESET);			
+		} 
+    	catch (XPathExpressionException e) 
 		{
 			LOGGER.info(xPath + " could not be evaluated !!");
 			e.printStackTrace();
@@ -295,5 +301,6 @@ public class Xml2JSON implements IXml2JSON
 	private DocumentBuilder builder;
 	private Document xmlDocument;
 	private XPathFactory xPathFactory;
+	private XPath xPath;
 	
 }
