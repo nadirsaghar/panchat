@@ -33,13 +33,13 @@ public class ToDateMacro implements IMacro {
 	}
 
 
-	public JsonElement execute(JsonArray macroArguments , Document context) throws MacroExeception 
+	public JsonElement execute(JsonArray macroArguments , Document context , XPath xPathEvaluator) throws MacroExeception 
 	{		
 		String result = "", date ="", sourceFormat ="", desiredFormat = "";
 		
-		XPathFactory xPathFactory;
+		/*XPathFactory xPathFactory;
 		xPathFactory = XPathFactory.newInstance();
-		XPath xpath = xPathFactory.newXPath();
+		XPath xpath = xPathFactory.newXPath();*/
 		
 		JsonElement value = macroArguments.get(0);
 		if(value.isJsonObject())
@@ -48,7 +48,7 @@ public class ToDateMacro implements IMacro {
 			{				 
 				 try 
 				 {
-					XPathExpression expr = xpath.compile( ((JsonObject)value).getAsJsonPrimitive("xpath").getAsString()  );
+					XPathExpression expr = xPathEvaluator.compile( ((JsonObject)value).getAsJsonPrimitive("xpath").getAsString()  );
 					date = expr.evaluate(context);
 				 } 
 				 catch (XPathExpressionException e) 

@@ -5,6 +5,7 @@ import javax.xml.xpath.XPathExpression;
 import javax.xml.xpath.XPathExpressionException;
 import javax.xml.xpath.XPathFactory;
 
+import org.panchat.xml2json.core.UniversalNamespaceCache;
 import org.panchat.xml2json.exception.MacroExeception;
 import org.w3c.dom.Document;
 
@@ -27,12 +28,13 @@ public class ConcatMacro implements IMacro {
 	}
 
 
-	public JsonElement execute(JsonArray macroArguments , Document context) throws MacroExeception 
+	public JsonElement execute(JsonArray macroArguments , Document context , XPath xPathEvaluator) throws MacroExeception 
 	{		
 		String result = "";
-		XPathFactory xPathFactory;
+		/*XPathFactory xPathFactory;
 		xPathFactory = XPathFactory.newInstance();
 		XPath xpath = xPathFactory.newXPath();
+		xpath.setNamespaceContext(new UniversalNamespaceCache(xmlDocument,false));*/
     	try 
     	{   for(int i =0; i<macroArguments.size();i++)
     		{
@@ -41,7 +43,7 @@ public class ConcatMacro implements IMacro {
     			{
     				if( ((JsonObject)value).has("xpath") )
     				{
-    					XPathExpression expr = xpath.compile( ((JsonObject)value).getAsJsonPrimitive("xpath").getAsString()  );
+    					XPathExpression expr = xPathEvaluator.compile( ((JsonObject)value).getAsJsonPrimitive("xpath").getAsString()  );
     					result += expr.evaluate(context);
     				}
     				else if( ((JsonObject)value).has("string") )

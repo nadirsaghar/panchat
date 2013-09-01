@@ -33,7 +33,7 @@ public class Xml2JSON implements IXml2JSON
 		
 		factory = DocumentBuilderFactory.newInstance();		
 		
-		//factory.setNamespaceAware(true);
+		factory.setNamespaceAware(true);
 		//factory.setNamespaceAware(false);
 		
 		builder = factory.newDocumentBuilder();
@@ -75,7 +75,7 @@ public class Xml2JSON implements IXml2JSON
 		if(macro == null) 
 			throw new MacroNotFoundException(name);
 		
-		return macro.execute(args , context);
+		return macro.execute(args , context , xPath);
 	}
 	
 	private JsonObject computeObjectValue(JsonObject schemaNode, Node context)

@@ -10,10 +10,60 @@
 			"xpath":"gbm:tcga_bcr/admin:admin/admin:bcr",
 			"type": "string"
 		},
+		"disease_code" : 
+		{
+			"xpath":"gbm:tcga_bcr/admin:admin/admin:disease_code",
+			"type": "string"
+		},
 		"tissue_site" : 
 		{
 			"xpath":"gbm:tcga_bcr/gbm:patient/shared:tumor_tissue_site",
 			"type": "string"
+		},
+		"vital_status" : 
+		{
+			"xpath":"gbm:tcga_bcr/gbm:patient/shared:vital_status",
+			"type": "string"
+		},
+		"days_to_last_followup" : 
+		{
+			"xpath":"gbm:tcga_bcr/gbm:patient/shared:days_to_last_followup",
+			"type": "string"
+		},
+		"race" : 
+		{
+			"xpath":"gbm:tcga_bcr/gbm:patient/shared:race",
+			"type": "string"
+		},
+		"days_to_initial_pathologic_diagnosis" : 
+		{
+			"xpath":"gbm:tcga_bcr/gbm:patient/shared:days_to_initial_pathologic_diagnosis",
+			"type": "string"
+		},
+		"age_at_initial_pathologic_diagnosis" : 
+		{
+			"xpath":"gbm:tcga_bcr/gbm:patient/shared:age_at_initial_pathologic_diagnosis",
+			"type": "string"
+		},
+		"year_of_initial_pathologic_diagnosis" : 
+		{
+			"xpath":"gbm:tcga_bcr/gbm:patient/shared:year_of_initial_pathologic_diagnosis",
+			"type": "string"
+		},
+		"date_of_form_completion" :
+		{
+			  "macro" :
+			  {
+			     "name":"concat",
+		      	 "arguments" : 
+		      	 [
+		      	 	{ "xpath" : "gbm:tcga_bcr/gbm:patient/shared:day_of_form_completion/text()" },
+		      	 	{ "string" : " " },
+		      	 	{ "xpath" : "gbm:tcga_bcr/gbm:patient/shared:month_of_form_completion/text()"},
+		      	 	{ "string" : " " },
+		      	 	{ "xpath" : "gbm:tcga_bcr/gbm:patient/shared:year_of_form_completion/text()" }
+		      	 ]
+			  } 	
 		},
 		"gender" : 
 		{
