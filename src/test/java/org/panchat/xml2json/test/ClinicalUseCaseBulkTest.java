@@ -20,7 +20,8 @@ public class ClinicalUseCaseBulkTest {
 	{	
 		try 
 		{
-			File[] files = new File("src/test/resources/clinical-usecase-sample-files").listFiles();			
+			
+			File[] files = new File(args[0]).listFiles();			
 			String schema = new Scanner( new File("src/test/resources/clinical-usecase/clinical-schema.json") ).useDelimiter("\\A").next();
 			Xml2JSON xml2json = new Xml2JSON();
 			Mappings mappings = new Mappings(schema);
@@ -31,7 +32,8 @@ public class ClinicalUseCaseBulkTest {
 		        {		        	
 		        	String result = xml2json.convertXmlToJson(file.getPath(), mappings, null);
 		        	
-		        	String path = "src/test/resources/clinical-usecase-sample-files-output/";
+		        	String path = args[1];
+		        	path += "/";
 		        	path += file.getName();
 		        	path = path.substring(0, path.length() - 4);
 		        	
