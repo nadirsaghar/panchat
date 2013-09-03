@@ -4,7 +4,7 @@
 	"id": "http://jsonschema.net",
 	"required": false,
 	"properties": 
-	{
+	{		
 		"site" : 
 		{
 			"xpath":"gbm:tcga_bcr/admin:admin/admin:bcr",
@@ -89,6 +89,30 @@
 		{ 
 		      "xpath":"gbm:tcga_bcr/gbm:patient/shared:karnofsky_performance_score",
 		      "type": "string"
-		}				
+		},
+		"drugs" :
+		{
+			  "macro" :
+			  {
+			     "name":"defaultConvertor",
+		      	 "arguments" : 
+		      	 [
+		      	 	"gbm:tcga_bcr/gbm:patient/rx:drugs"
+		      	 ]
+			  }
+		},
+		"follow_ups" :
+		{
+			  "macro" :
+			  {
+			     "name":"defaultConvertor",
+		      	 "arguments" : 
+		      	 [
+		      	 	"gbm:tcga_bcr/gbm:patient/gbm:follow_ups"
+		      	 ]
+			  }
+		}
+		
+						
 	}
 }

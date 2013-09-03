@@ -63,8 +63,9 @@ public class Xml2JSON implements IXml2JSON
 			LOGGER.severe("The Schema file is Empty - has no properties!!");
 			return null;
 		}
-	
-		return computeObjectValue(mappingsObject.getAsJsonObject("properties"), xmlDocument).toString();
+		Gson gson = new GsonBuilder().setPrettyPrinting().create();
+		return gson.toJson(computeObjectValue(mappingsObject.getAsJsonObject("properties"), xmlDocument));
+		//return computeObjectValue(mappingsObject.getAsJsonObject("properties"), xmlDocument).toString();
 
 	}
 	

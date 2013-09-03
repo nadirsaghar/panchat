@@ -18,6 +18,7 @@ public class Configuration {
 		{
 			registerMacro(ConcatMacro.class);
 			registerMacro(ToDateMacro.class);
+			registerMacro(DefaultConvertor.class);
 		} 
 		catch (MacroRegistrationException e) 
 		{			
