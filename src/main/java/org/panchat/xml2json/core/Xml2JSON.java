@@ -27,7 +27,7 @@ public class Xml2JSON implements IXml2JSON
 	
 	private final static Logger LOGGER = MyLogger.getLogger();
 	
-	public Xml2JSON(String xmlFilePath) throws ParserConfigurationException, SAXException, IOException
+	public Xml2JSON() throws ParserConfigurationException
 	{
 		//factory.setNamespaceAware(false);
 		
@@ -36,9 +36,8 @@ public class Xml2JSON implements IXml2JSON
 		factory.setNamespaceAware(true);
 		//factory.setNamespaceAware(false);
 		
-		builder = factory.newDocumentBuilder();
+		builder = factory.newDocumentBuilder();	
 		
-		xmlDocument = builder.parse(xmlFilePath);
 		
 		//xPathFactory = XPathFactory.newInstance();
 		
@@ -46,14 +45,22 @@ public class Xml2JSON implements IXml2JSON
 		
 		xPath = XPathFactory.newInstance().newXPath();
 	    
-		xPath.setNamespaceContext(new UniversalNamespaceCache(xmlDocument,false));
+		
 	}
 	
 	/* (non-Javadoc)
 	 * @see org.panchat.xml2json.interfaces.IXml2Json#convertXmlToJson(java.lang.String, org.panchat.xml2json.interfaces.IMappings, org.panchat.xml2json.interfaces.ISettings)
 	 */
-	public String convertXmlToJson(IMappings mappings,ISettings settings) 
+	public String convertXmlToJson(String XMLFilePath, IMappings mappings,ISettings settings) 
 	{
+		try {
+			xmlDocument = builder.parse(XMLFilePath);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+		xPath.setNamespaceContext(new UniversalNamespaceCache(xmlDocument,false));
+		
 		LOGGER.info("Starting Conversion");
 		JsonParser parser = new JsonParser();
 		JsonObject mappingsObject = (JsonObject)parser.parse(mappings.getMappingsAsString());

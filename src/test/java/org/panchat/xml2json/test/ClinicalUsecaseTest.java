@@ -21,9 +21,9 @@ public class ClinicalUsecaseTest {
 		try 
 		{
 			String schema = new Scanner( new File("src/test/resources/clinical-usecase/clinical-schema.json") ).useDelimiter("\\A").next();
-			Xml2JSON xml2json = new Xml2JSON("src/test/resources/clinical-usecase/clinical-data.xml");
+			Xml2JSON xml2json = new Xml2JSON();
 			Mappings mappings = new Mappings(schema);
-			String result = xml2json.convertXmlToJson(mappings, null);
+			String result = xml2json.convertXmlToJson("src/test/resources/clinical-usecase/clinical-data.xml", mappings, null);
 			System.out.println(result);
 		} 
 		
