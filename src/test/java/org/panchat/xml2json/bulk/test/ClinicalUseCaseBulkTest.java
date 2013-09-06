@@ -1,15 +1,16 @@
 /**
  * 
  */
-package org.panchat.xml2json.test;
+package org.panchat.xml2json.bulk.test;
 
 import java.io.File;
+import java.io.FileFilter;
 import java.util.Scanner;
 
+import org.panchat.xml2json.bulk.helpers.DefaultFileWriter;
+import org.panchat.xml2json.bulk.helpers.IWriter;
 import org.panchat.xml2json.core.Mappings;
 import org.panchat.xml2json.core.Xml2JSON;
-import org.panchat.xml2json.helpers.DefaultFileWriter;
-import org.panchat.xml2json.helpers.IWriter;
 
 /**
  * @author nakull
@@ -22,32 +23,31 @@ public class ClinicalUseCaseBulkTest {
 	{	
 		try 
 		{
+			String sourceDirectory = args[0];
+			String destDirectory = args[1];
 			
-			File[] files = new File(args[0]).listFiles();			
+			File[] files = new File(sourceDirectory).listFiles(
+					new FileFilter() {
+						
+						public boolean accept(File arg0) {
+					
+							return arg0.getName().contains("_clinical") && arg0.getName().endsWith("xml") ;
+						}
+					}
+					);			
 			String schema = new Scanner( new File("src/test/resources/clinical-usecase/clinical-schema.json") ).useDelimiter("\\A").next();
 			Xml2JSON xml2json = new Xml2JSON();
 			Mappings mappings = new Mappings(schema);
-			IWriter writer = new DefaultFileWriter();
+			IWriter writer = new DefaultFileWriter(destDirectory , "clinical-data");
 			for (File file : files) 
 			{
 		        if (file.isFile()) 
 		        {		        	
 		        	String result = xml2json.convertXmlToJson(file.getPath(), mappings, null);
-		        	
-		        	String path = args[1];
-		        	path += "/";
-		        	path += file.getName();
-		        	path = path.substring(0, path.length() - 4);
-		        	
-		        	Object[] arguments = new Object[1];
-		        	arguments[0] = path;
-		        	writer.write(result, arguments);
-		        	
+		        	writer.write(result);
 		        }
 			}   
 			
-			String result = xml2json.convertXmlToJson("src/test/resources/clinical-usecase/clinical-data.xml", mappings, null);
-			System.out.println(result);
 		} 
 		
 		catch (Exception e) 
