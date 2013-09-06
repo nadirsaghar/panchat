@@ -1,9 +1,12 @@
 package org.panchat.xml2json.macros;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import javax.xml.xpath.XPath;
 import javax.xml.xpath.XPathExpression;
 import javax.xml.xpath.XPathExpressionException;
-import javax.xml.xpath.XPathFactory;
 
 import org.panchat.xml2json.exception.MacroExeception;
 import org.w3c.dom.Document;
@@ -12,9 +15,6 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonPrimitive;
-
-import java.util.Date;
-import java.text.*;
 
 public class ToDateMacro implements IMacro {
 

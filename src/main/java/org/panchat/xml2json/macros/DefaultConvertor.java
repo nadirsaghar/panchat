@@ -5,24 +5,26 @@ package org.panchat.xml2json.macros;
 
 import java.io.StringWriter;
 
-import javax.xml.transform.*;
+import javax.xml.transform.OutputKeys;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.xpath.XPath;
 import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathExpression;
-import javax.xml.xpath.XPathExpressionException;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.json.XML;
 import org.panchat.xml2json.exception.MacroExeception;
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-
-import org.json.*;
 /**
  * @author nakull
  *

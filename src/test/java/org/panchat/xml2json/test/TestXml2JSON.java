@@ -1,9 +1,8 @@
 package org.panchat.xml2json.test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.fail;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -11,8 +10,8 @@ import javax.xml.parsers.ParserConfigurationException;
 
 import org.junit.Test;
 import org.panchat.xml2json.api.IMappings;
-import org.panchat.xml2json.core.*;
-import org.panchat.xml2json.macros.*;
+import org.panchat.xml2json.core.Mappings;
+import org.panchat.xml2json.core.Xml2JSON;
 import org.xml.sax.SAXException;
 
 public class TestXml2JSON {

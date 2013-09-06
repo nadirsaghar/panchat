@@ -3,19 +3,37 @@
  */
 package org.panchat.xml2json.core;
 
-import org.panchat.xml2json.api.*;
-import org.panchat.xml2json.conf.*;
-import org.panchat.xml2json.exception.*;
-import org.panchat.xml2json.macros.*;
-import java.io.*;
-import java.util.*;
 import java.util.Map.Entry;
+import java.util.Set;
 import java.util.logging.Logger;
-import javax.xml.parsers.*;
-import javax.xml.xpath.*;
-import org.w3c.dom.*;
-import org.xml.sax.SAXException;
-import com.google.gson.*;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.xpath.XPath;
+import javax.xml.xpath.XPathConstants;
+import javax.xml.xpath.XPathExpressionException;
+import javax.xml.xpath.XPathFactory;
+
+import org.panchat.xml2json.api.IMappings;
+import org.panchat.xml2json.api.ISettings;
+import org.panchat.xml2json.api.IXml2JSON;
+import org.panchat.xml2json.conf.Configuration;
+import org.panchat.xml2json.conf.MyLogger;
+import org.panchat.xml2json.exception.MacroExeception;
+import org.panchat.xml2json.exception.MacroNotFoundException;
+import org.panchat.xml2json.macros.IMacro;
+import org.w3c.dom.Document;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.google.gson.JsonPrimitive;
 
 /**
  * @author nakull

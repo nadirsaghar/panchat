@@ -4,7 +4,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.panchat.xml2json.exception.MacroRegistrationException;
-import org.panchat.xml2json.macros.*;
+import org.panchat.xml2json.macros.ConcatMacro;
+import org.panchat.xml2json.macros.DefaultConvertor;
+import org.panchat.xml2json.macros.IMacro;
+import org.panchat.xml2json.macros.ToDateMacro;
 
 public class Configuration {
 

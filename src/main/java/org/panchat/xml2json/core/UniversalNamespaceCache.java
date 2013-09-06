@@ -1,11 +1,17 @@
 package org.panchat.xml2json.core;
 
-import javax.xml.xpath.*;
-import java.util.*;
-import org.w3c.dom.*;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+
+import javax.xml.XMLConstants;
+import javax.xml.namespace.NamespaceContext;
+
+import org.w3c.dom.Attr;
 import org.w3c.dom.Document;
-import javax.xml.namespace.*;
-import javax.xml.*;
+import org.w3c.dom.NamedNodeMap;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 
 public class UniversalNamespaceCache implements NamespaceContext {
     private static final String DEFAULT_NS = "DEFAULT";

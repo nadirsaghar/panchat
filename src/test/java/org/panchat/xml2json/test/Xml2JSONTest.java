@@ -3,11 +3,12 @@
  */
 package org.panchat.xml2json.test;
 
-import java.io.*;
-import java.util.*;
+import java.io.File;
+import java.util.Scanner;
 
-import org.panchat.xml2json.api.*;
-import org.panchat.xml2json.core.*;
+import org.panchat.xml2json.api.IMappings;
+import org.panchat.xml2json.core.Mappings;
+import org.panchat.xml2json.core.Xml2JSON;
 
 /**
  * @author nakull

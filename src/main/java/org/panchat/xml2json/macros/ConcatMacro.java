@@ -3,13 +3,14 @@ package org.panchat.xml2json.macros;
 import javax.xml.xpath.XPath;
 import javax.xml.xpath.XPathExpression;
 import javax.xml.xpath.XPathExpressionException;
-import javax.xml.xpath.XPathFactory;
 
-import org.panchat.xml2json.core.UniversalNamespaceCache;
 import org.panchat.xml2json.exception.MacroExeception;
 import org.w3c.dom.Document;
 
-import com.google.gson.*;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonPrimitive;
 
 public class ConcatMacro implements IMacro {
 
