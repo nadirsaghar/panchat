@@ -46,35 +46,30 @@ public class Xml2JSON implements IXml2JSON
 	private final static Logger LOGGER = MyLogger.getLogger();
 	
 	public Xml2JSON() throws ParserConfigurationException
-	{
-		//factory.setNamespaceAware(false);
-		
+	{		
 		factory = DocumentBuilderFactory.newInstance();		
 		
 		factory.setNamespaceAware(true);
 		//factory.setNamespaceAware(false);
 		
-		builder = factory.newDocumentBuilder();	
-		
-		
-		//xPathFactory = XPathFactory.newInstance();
-		
+		builder = factory.newDocumentBuilder();		
+				
 		configuration = new Configuration();
 		
-		xPath = XPathFactory.newInstance().newXPath();
-	    
+		xPath = XPathFactory.newInstance().newXPath();    
 		
 	}
+
+	public Configuration getConfigurationObject()
+	{
+		return configuration;
+	}
 	
-	/* (non-Javadoc)
-	 * @see org.panchat.xml2json.interfaces.IXml2Json#convertXmlToJson(java.lang.String, org.panchat.xml2json.interfaces.IMappings, org.panchat.xml2json.interfaces.ISettings)
-	 */
 	public String convertXmlToJson(String XMLFilePath, IMappings mappings,ISettings settings) 
 	{
 		try {
 			xmlDocument = builder.parse(XMLFilePath);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} 
 		xPath.setNamespaceContext(new UniversalNamespaceCache(xmlDocument,false));
@@ -89,9 +84,7 @@ public class Xml2JSON implements IXml2JSON
 			return null;
 		}
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();
-		return gson.toJson(computeObjectValue(mappingsObject.getAsJsonObject("properties"), xmlDocument));
-		//return computeObjectValue(mappingsObject.getAsJsonObject("properties"), xmlDocument).toString();
-
+		return gson.toJson(computeObjectValue(mappingsObject.getAsJsonObject("properties"), xmlDocument));		
 	}
 	
 	private JsonElement executeMacro(String name, JsonArray args, Document context) throws MacroNotFoundException, MacroExeception
@@ -326,7 +319,6 @@ public class Xml2JSON implements IXml2JSON
 	private DocumentBuilderFactory factory;
 	private DocumentBuilder builder;
 	private Document xmlDocument;
-	private XPathFactory xPathFactory;
 	private XPath xPath;
 	
 }
