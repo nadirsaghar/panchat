@@ -37,6 +37,8 @@ import com.google.gson.JsonPrimitive;
 
 /**
  * @author nakull
+ * 
+ * Core Class for Conversion
  *
  */
 public class Xml2JSON implements IXml2JSON 
@@ -50,7 +52,6 @@ public class Xml2JSON implements IXml2JSON
 		factory = DocumentBuilderFactory.newInstance();		
 		
 		factory.setNamespaceAware(true);
-		//factory.setNamespaceAware(false);
 		
 		builder = factory.newDocumentBuilder();		
 				
